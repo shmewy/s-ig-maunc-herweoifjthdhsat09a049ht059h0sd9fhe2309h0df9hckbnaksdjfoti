@@ -5,10 +5,10 @@
   <title>Education Client</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="./style.css">
-   <a href="https://educationpass.brt.ar/" target="_blank">Click here</a>
 </head>
 <body>
  <script>
+   <a href="#" target="_blank" onclick="event.preventDefault(); window.open('about:blank').document.write('This is the content of the link.');">Click me</a> 
    let x = prompt('Enter your passcode:','fcpsschools')
    if (x !== 'mc-has-rizz'){
      alert('You may pass. We will now redirect you to https://lms.fcps.edu/')
