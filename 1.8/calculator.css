@@ -106,3 +106,15 @@ h2{
 .operator:hover{
     background: #00d9ff;
 }
+input[type=text] {
+    padding: 0;
+    height: 30px;
+    position: relative;
+    left: 0;
+    outline: none;
+    border: 0px solid #cdcdcd;
+    border-color: rgba(0, 0, 0, .15);
+    background-color: white;
+    font-size: 20;
+  }
+  
