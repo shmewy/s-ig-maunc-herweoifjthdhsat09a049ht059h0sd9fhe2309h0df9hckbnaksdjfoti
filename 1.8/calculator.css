@@ -108,7 +108,7 @@ h2{
 }
 input[type=text] {
     padding: 0;
-    width: 55;
+    width: 200;
     height: 55;
     padding-top: -1;
     text-align: center;
@@ -122,8 +122,8 @@ input[type=text] {
     font-size: 20;
     font-weight: 500;
     margin: 1.5;
-    margin-top: -1px;
-    margin-left: 438px;
+    margin-top: 50px;
+    margin-left: 500px;
     transition:0.25px
   }
   
