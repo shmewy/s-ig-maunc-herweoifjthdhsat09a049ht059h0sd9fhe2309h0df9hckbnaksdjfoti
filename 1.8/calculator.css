@@ -122,8 +122,8 @@ input[type=text] {
     font-size: 20;
     font-weight: 500;
     margin: 1.5;
-    margin-top: -1px;
-    margin-left: 438px;
+    margin-top: 50px;
+    margin-left: 600px;
     transition:0.25px
   }
   
