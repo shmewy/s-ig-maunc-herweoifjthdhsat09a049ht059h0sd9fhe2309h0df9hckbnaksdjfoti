@@ -12,6 +12,7 @@ document.addEventListener('keyup', function(event) {
 document.addEventListener('keydown', function(event) {
     if (event.altKey) {
         console.log('Alt key is pressed.');
-        window.location.href = 'calculator.html'; // Redirect to calculator.html
+        document.body.innerHTML = ''; // Clear the content of the page
+         window.location.href = 'calculator.html'; // Redirect after the page is cleared
     }
 });
