@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator Login</title>
+    <title>Calculator</title>
+    <link rel="icon" href="favicon.png" type="image/png">
     <style>
         body {
             display: flex;
@@ -34,7 +35,7 @@
 </head>
 <body>
     <div class="calculator">
-        <input type="text" id="display">
+        <input type="text" id="display" onkeydown="handleKeyDown(event)">
         <div class="keys">
             <!-- Numeric Buttons -->
             <button type="button" onclick="press('1')">1</button>
@@ -47,31 +48,65 @@
             <button type="button" onclick="press('8')">8</button>
             <button type="button" onclick="press('9')">9</button>
             <button type="button" onclick="press('0')">0</button>
+            <button type="button" onclick="addOperator('+')">+</button>
+            <button type="button" onclick="addOperator('-')">-</button>
+            <button type="button" onclick="addOperator('*')">*</button>
+            <button type="button" onclick="addOperator('/')">/</button>
+            <button type="button" onclick="calculate()">=</button>
             <button type="button" onclick="clearDisplay()">C</button>
-            <button type="button" onclick="validatePassword()">Enter</button>
         </div>
     </div>
 
     <script>
+        let previousInput = '';
+        let currentInput = '';
+        let operation = null;
+
         function press(num) {
             document.getElementById('display').value += num;
         }
 
+        function addOperator(op) {
+            if (!operation) {
+                previousInput = document.getElementById('display').value;
+                operation = op;
+                document.getElementById('display').value += op;
+            }
+        }
+
+        function calculate() {
+            currentInput = document.getElementById('display').value.split(operation)[1];
+            if (operation && previousInput && currentInput) {
+                document.getElementById('display').value = eval(previousInput + operation + currentInput);
+                previousInput = document.getElementById('display').value;
+                operation = null;
+                currentInput = '';
+            }
+        }
+
         function clearDisplay() {
             document.getElementById('display').value = '';
+            previousInput = '';
+            currentInput = '';
+            operation = null;
         }
 
         function validatePassword() {
-    const password = 'hardboiledeggsgohard'; // Your secret password
-    const input = document.getElementById('display').value;
-    if (input === password) {
-        sessionStorage.setItem('authenticated', 'true'); // Set a flag in sessionStorage
-        window.location.href = 'redirect.html'; // Redirect to content page
-    } else {
-        alert('Incorrect password!');
-        clearDisplay();
-    }
-}
+            const secretPassword = 'hardboiledeggsgohard'; // Your secret password
+            const input = document.getElementById('display').value;
+            if (input === secretPassword) {
+                window.location.href = 'redirect.html'; // Redirect to content page
+            } else {
+                alert('Incorrect password!');
+                clearDisplay();
+            }
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === 'Enter') {
+                validatePassword();
+            }
+        }
     </script>
 </body>
 </html>
