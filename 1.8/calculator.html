@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 10px #ccc;
+            background-color: white;
+        }
+        .keys button {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+        input[type="text"] {
+            width: 218px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display">
+        <div class="keys">
+            <!-- Numeric Buttons -->
+            <button type="button" onclick="press('1')">1</button>
+            <button type="button" onclick="press('2')">2</button>
+            <button type="button" onclick="press('3')">3</button>
+            <button type="button" onclick="press('4')">4</button>
+            <button type="button" onclick="press('5')">5</button>
+            <button type="button" onclick="press('6')">6</button>
+            <button type="button" onclick="press('7')">7</button>
+            <button type="button" onclick="press('8')">8</button>
+            <button type="button" onclick="press('9')">9</button>
+            <button type="button" onclick="press('0')">0</button>
+            <button type="button" onclick="clearDisplay()">C</button>
+            <button type="button" onclick="validatePassword()">Enter</button>
+        </div>
+    </div>
+
+    <script>
+        function press(num) {
+            document.getElementById('display').value += num;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function validatePassword() {
+    const password = 'hardboiledeggsgohard'; // Your secret password
+    const input = document.getElementById('display').value;
+    if (input === password) {
+        sessionStorage.setItem('authenticated', 'true'); // Set a flag in sessionStorage
+        window.location.href = 'redirect.html'; // Redirect to content page
+    } else {
+        alert('Incorrect password!');
+        clearDisplay();
+    }
+}
+    </script>
+</body>
+</html>
