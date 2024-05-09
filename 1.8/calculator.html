@@ -95,7 +95,7 @@
             const input = document.getElementById('display').value;
             if (input === secretPassword) {
                 sessionStorage.setItem('authenticated', 'true');
-                window.location.href = 'content.html'; // Redirect to content page
+                window.location.href = 'redirect.html'; // Redirect to content page
             } else {
                 clearDisplay();
             }
