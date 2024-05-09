@@ -24,17 +24,17 @@
    </body> 
 
     <form name="form1" class="calci" action="calculator.html" method="POST">
-<input type="text" name="answer" id="display">
-<script>
-  document.getElementById('display').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent the form from submitting in the traditional way if in a form
-        var userInput = document.getElementById('display').value; // Get the value from the text input field
-        if(userInput != 'hardboiledeggsgohard'){
-          location.reload();
+      <form method="POST" action="validate.php">
+        <input type="text" name="password" id="display">
+        <button type="submit">Login</button>
+    </form>
+    <script>
+      document.getElementById('display').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && this.value === '') {
+          event.preventDefault(); // Prevent form submission if input is empty
         }
-    }
-});
+      });
+    </script>
 </script>
 <br></br>
 
