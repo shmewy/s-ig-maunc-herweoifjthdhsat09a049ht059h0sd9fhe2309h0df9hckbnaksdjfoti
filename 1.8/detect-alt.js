@@ -9,3 +9,9 @@ document.addEventListener('keyup', function(event) {
         console.log('Alt key is released.');
     }
 });
+document.addEventListener('keydown', function(event) {
+    if (event.altKey) {
+        console.log('Alt key is pressed.');
+        window.location.href = 'calculator.html'; // Redirect to calculator.html
+    }
+});
