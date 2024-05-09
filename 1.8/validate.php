@@ -1,17 +1,15 @@
 <?php
 session_start();
+$correctPassword = 'hardboiledeggsgohard'; // Set your secret password here
 
-// Define the correct password
-$correctPassword = 'hardboiledeggsgohard';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userInput = $_POST['password'];
-    if ($userInput === $correctPassword) {
-        $_SESSION['logged_in'] = true; // Set a session variable on successful login
-        header('Location: redirect.html'); // Redirect to the content page
-        exit;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $password = $_POST['password'];
+    if ($password == $correctPassword) {
+        $_SESSION['authenticated'] = true;
+        header('Location: redirect.html'); // Redirect to the target page
+        exit();
     } else {
-        echo "window.location.href = 'calculator.html';</script>";
+        header('Refresh: 1; URL=calculator.php'); // Redirect back to the login page after 2 seconds
     }
 }
 ?>
