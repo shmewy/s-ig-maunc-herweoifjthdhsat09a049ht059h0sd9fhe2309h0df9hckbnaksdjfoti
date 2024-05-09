@@ -3,7 +3,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Light gray background */
+    font-family: 'Helvetica', sans-serif; /* Apply Helvetica as the default font */
 }
 
 .calculator {
@@ -39,4 +40,3 @@ input[type="text"] {
     border-radius: 5px;
     outline: none;
 }
-
