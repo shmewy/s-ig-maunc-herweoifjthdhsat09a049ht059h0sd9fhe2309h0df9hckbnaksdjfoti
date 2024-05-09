@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+    <title>Calculator Login</title>
     <style>
         body {
             display: flex;
@@ -95,9 +94,9 @@
             const secretPassword = 'hardboiledeggsgohard'; // Your secret password
             const input = document.getElementById('display').value;
             if (input === secretPassword) {
-                window.location.href = 'redirect.html'; // Redirect to content page
+                sessionStorage.setItem('authenticated', 'true');
+                window.location.href = 'content.html'; // Redirect to content page
             } else {
-                alert('Incorrect password!');
                 clearDisplay();
             }
         }
