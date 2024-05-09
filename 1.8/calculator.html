@@ -15,21 +15,7 @@
     </head>
 
    <body>
-    <form id ='textForm'>
-      <input type="text" name="answer" id="display">
-    </form>
-    <script>
-      document.getElementById('display').addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Prevent the form from submitting in the traditional way if in a form
-    
-            var userInput = document.getElementById('display').value; // Get the value from the text input field
-        }
-        if (userInput != bruhstopleakinglink){
-          location.reload();
-        }
-      });
-    </script>
+
     <h1>
       Calculator Project
     </h1>
@@ -38,6 +24,18 @@
    </body> 
 
     <form name="form1" class="calci" action="calculator.html" method="POST">
+<input type="text" name="answer" id="display">
+<script>
+  document.getElementById('display').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent the form from submitting in the traditional way if in a form
+        var userInput = document.getElementById('display').value; // Get the value from the text input field
+    }
+});
+if(userInput != bruh){
+  location.reload();
+}
+</script>
 <br></br>
 
 
@@ -78,4 +76,5 @@
 
 <input type="button"  class= "operator" value="=" onclick="form1.answer.value=eval(form1.answer.value)">
  </form>
+ 
 </html>
