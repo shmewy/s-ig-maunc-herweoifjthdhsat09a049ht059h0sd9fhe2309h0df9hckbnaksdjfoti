@@ -4,64 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
 </head>
 <body>
-    <div class="keys">
-        <button onclick="clearDisplay()" style="grid-area: clear;">C</button>
-        <button onclick="addOperator('/')" style="grid-area: divide;">/</button>
-        <button onclick="addOperator('*')" style="grid-area: multiply;">*</button>
-        <button onclick="addOperator('-')" style="grid-area: subtract;">-</button>
-        <button onclick="press('7')" style="grid-area: seven;">7</button>
-        <button onclick="press('8')" style="grid-area: eight;">8</button>
-        <button onclick="press('9')" style="grid-area: nine;">9</button>
-        <button onclick="addOperator('+')" style="grid-area: add;">+</button>
-        <button onclick="press('4')" style="grid-area: four;">4</button>
-        <button onclick="press('5')" style="grid-area: five;">5</button>
-        <button onclick="press('6')" style="grid-area: six;">6</button>
-        <button onclick="press('1')" style="grid-area: one;">1</button>
-        <button onclick="press('2')" style="grid-area: two;">2</button>
-        <button onclick="press('3')" style="grid-area: three;">3</button>
-        <button onclick="calculate()" style="grid-area: equals;" rowspan="2">=</button>
-        <button onclick="press('0')" style="grid-area: zero;">0</button>
-        <button onclick="press('.')" style="grid-area: dot;">.</button>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="keys">
+            <button onclick="press('7')">7</button>
+            <button onclick="press('8')">8</button>
+            <button onclick="press('9')">9</button>
+            <button onclick="addOperator('/')">/</button>
+            <button onclick="press('4')">4</button>
+            <button onclick="press('5')">5</button>
+            <button onclick="press('6')">6</button>
+            <button onclick="addOperator('*')">*</button>
+            <button onclick="press('1')">1</button>
+            <button onclick="press('2')">2</button>
+            <button onclick="press('3')">3</button>
+            <button onclick="addOperator('-')">-</button>
+            <button onclick="press('0')">0</button>
+            <button onclick="press('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="addOperator('+')">+</button>
+            <button onclick="clearDisplay()">C</button>
+        </div>
     </div>
-</div>
 
     <script>
-    let previousInput = '';
-    let currentInput = '';
-    let operation = null;
-    function press(num) {
-        document.getElementById('display').value += num;
-    }
-
-    function addOperator(op) {
-        if (!operation) {
-            previousInput = document.getElementById('display').value;
-            operation = op;
-            document.getElementById('display').value += op;
+        let previousInput = '';
+        let currentInput = '';
+        let operation = null;
+        function press(num) {
+            document.getElementById('display').value += num;
         }
-    }
 
-    function calculate() {
-        currentInput = document.getElementById('display').value.split(operation)[1];
-        if (operation && previousInput && currentInput) {
-            document.getElementById('display').value = eval(previousInput + operation + currentInput);
-            previousInput = document.getElementById('display').value;
-            operation = null;
+        function addOperator(op) {
+            if (!operation) {
+                previousInput = document.getElementById('display').value;
+                operation = op;
+                document.getElementById('display').value = ''; // Clear display to enter new number
+            }
+        }
+
+        function calculate() {
+            currentInput = document.getElementById('display').value;
+            if (operation && previousInput && currentInput) {
+                document.getElementById('display').value = eval(previousInput + operation + currentInput);
+                previousInput = ''; // Reset previousInput
+                operation = null;
+                currentInput = '';
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+            previousInput = '';
             currentInput = '';
+            operation = null;
         }
-    }
-
-    function clearDisplay() {
-        document.getElementById('display').value = '';
-        previousInput = '';
-        currentInput = '';
-        operation = null;
-    }
-
+        
         function validatePassword() {
             const secretPassword = 'hardboiledeggsgohard'; // Your secret password
             const input = document.getElementById('display').value;
