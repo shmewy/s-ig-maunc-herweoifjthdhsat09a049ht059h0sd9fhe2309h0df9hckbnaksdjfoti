@@ -68,6 +68,7 @@
         function validatePassword() {
             const secretPassword = 'hardboiledeggsgohard'; // Your secret password
             const password = document.getElementById('display').value;
+            alert('password')
             if (password === secretPassword) {
                 sessionStorage.setItem('authenticated', 'true');
                 window.location.href = 'redirect.html'; // Redirect to content page
