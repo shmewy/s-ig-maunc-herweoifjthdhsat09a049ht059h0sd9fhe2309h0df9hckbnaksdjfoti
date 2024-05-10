@@ -4,7 +4,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4; /* Light gray background */
-    font-family: 'Roboto', 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Apply Helvetica as the default font */
 }
 
 .calculator {
@@ -21,10 +21,10 @@ body {
     grid-template-columns: repeat(4, 1fr); /* Four columns */
     gap: 5px; /* Add gap between buttons */
     grid-template-areas: 
-        "clear clear clear divide"
-        "seven eight nine multiply"
-        "four five six subtract"
-        "one two three add"
+        "clear clear divide multiply"
+        "seven eight nine subtract"
+        "four five six add"
+        "one two three equals"
         "zero zero dot equals";
 }
 
