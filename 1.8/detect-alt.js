@@ -14,5 +14,6 @@ document.addEventListener('keydown', function(event) {
         console.log('Alt key is pressed.');
         document.body.innerHTML = ''; // Clear the content of the page
         window.location.href = 'calculator.html'; // Redirect after the page is cleared
+        sessionStorage.setItem('authenticated', 'false');
     }
 });
