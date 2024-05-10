@@ -9,32 +9,32 @@ body {
 
 .calculator {
     border: 1px solid #ccc;
-    padding: 30px;
+    padding: 20px;
     background-color: #ffffff; /* Set a white background */
     border-radius: 8px; /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 240px; /* Adjusted width */
+    width: 420px; /* Increased width for a wider appearance */
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .keys {
+    width: 100%; /* Ensures the keys container is full-width of the calculator */
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Four columns */
-    gap: 10px; /* Add gap between buttons */
-    width: 100%;
+    gap: 5px; /* Add gap between buttons */
+    margin-top: 10px; /* Space between the input and the buttons */
 }
 
 .keys button {
-    width: 100%; /* Full width of the grid column */
-    height: 50px; /* Increase height for better clickability */
-    margin: 0; /* Remove margin */
+    height: 60px; /* Slightly increased height for better clickability */
     background-color: #eee; /* Light gray button color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px; /* Increase font size for better readability */
+    font-size: 18px; /* Slightly increased font size for better readability */
     transition: background-color 0.2s ease; /* Smooth color transition on hover */
 }
 
@@ -43,12 +43,13 @@ body {
 }
 
 input[type="text"] {
-    width: 100%; /* Full width minus padding to fit container */
-    padding: 10px;
-    font-size: 16px; /* Increase font size for better readability */
+    width: 100%; /* Full width of the calculator */
+    padding: 12px;
+    font-size: 18px; /* Increased font size for better readability */
     text-align: right;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    margin-bottom: 10px; /* Add space between input and keys */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    margin-bottom: 10px; /* Space above the keys */
 }
