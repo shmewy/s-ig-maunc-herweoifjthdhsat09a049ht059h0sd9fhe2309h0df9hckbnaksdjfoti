@@ -11,23 +11,23 @@
     <div class="calculator">
         <input type="text" id="display" onkeydown="handleKeyDown(event)">
         <div class="keys">
-            <!-- Numeric Buttons -->
-            <button type="button" onclick="press('1')">1</button>
-            <button type="button" onclick="press('2')">2</button>
-            <button type="button" onclick="press('3')">3</button>
-            <button type="button" onclick="press('4')">4</button>
-            <button type="button" onclick="press('5')">5</button>
-            <button type="button" onclick="press('6')">6</button>
-            <button type="button" onclick="press('7')">7</button>
-            <button type="button" onclick="press('8')">8</button>
-            <button type="button" onclick="press('9')">9</button>
-            <button type="button" onclick="press('0')">0</button>
-            <button type="button" onclick="addOperator('+')">+</button>
-            <button type="button" onclick="addOperator('-')">-</button>
-            <button type="button" onclick="addOperator('*')">*</button>
-            <button type="button" onclick="addOperator('/')">/</button>
-            <button type="button" onclick="calculate()">=</button>
-            <button type="button" onclick="clearDisplay()">C</button>
+            <button style="grid-area: clear;">C</button>
+            <button style="grid-area: divide;">/</button>
+            <button style="grid-area: multiply;">*</button>
+            <button style="grid-area: subtract;">-</button>
+            <button style="grid-area: seven;">7</button>
+            <button style="grid-area: eight;">8</button>
+            <button style="grid-area: nine;">9</button>
+            <button style="grid-area: add;">+</button>
+            <button style="grid-area: four;">4</button>
+            <button style="grid-area: five;">5</button>
+            <button style="grid-area: six;">6</button>
+            <button style="grid-area: one;">1</button>
+            <button style="grid-area: two;">2</button>
+            <button style="grid-area: three;">3</button>
+            <button style="grid-area: equals;" rowspan="2">=</button>
+            <button style="grid-area: zero;">0</button>
+            <button style="grid-area: dot;">.</button>
         </div>
     </div>
 
