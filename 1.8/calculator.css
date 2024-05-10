@@ -4,26 +4,33 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4; /* Light gray background */
-    font-family: 'Helvetica', sans-serif; /* Apply Helvetica as the default font */
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
 .calculator {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px; /* Increased padding for better spacing */
     background-color: #ffffff; /* Set a white background */
     border-radius: 8px; /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Set a fixed width to control the form factor */
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Organize buttons into a grid layout */
+    gap: 5px; /* Add gap between buttons */
 }
 
 .keys button {
-    width: 40px;
-    height: 40px;
-    margin: 2px;
+    width: 100%; /* Full width of the grid column */
+    height: 50px; /* Increase height for better clickability */
+    margin: 0; /* Remove margin */
     background-color: #eee; /* Light gray button color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px; /* Increase font size for better readability */
     transition: background-color 0.2s ease; /* Smooth color transition on hover */
 }
 
@@ -32,11 +39,12 @@ body {
 }
 
 input[type="text"] {
-    width: 180px;
+    width: 100%; /* Full width of the calculator */
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px; /* Increase font size for better readability */
     text-align: right;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    margin-bottom: 10px; /* Add space between input and keys */
 }
