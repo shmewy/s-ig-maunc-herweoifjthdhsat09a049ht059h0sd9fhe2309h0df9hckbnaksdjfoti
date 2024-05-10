@@ -13,7 +13,7 @@ body {
     background-color: #ffffff; /* Set a white background */
     border-radius: 8px; /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Set a fixed width to control the form factor */
+    width: 240px; /* Adjusted width */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,10 +23,11 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Four columns */
     gap: 5px; /* Add gap between buttons */
+    width: 100%;
 }
 
 .keys button {
-    width: 50px; /* Full width of the grid column */
+    width: 100%; /* Full width of the grid column */
     height: 50px; /* Increase height for better clickability */
     margin: 0; /* Remove margin */
     background-color: #eee; /* Light gray button color */
@@ -42,7 +43,7 @@ body {
 }
 
 input[type="text"] {
-    width: calc(100% - 20px); /* Full width minus padding to fit container */
+    width: 100%; /* Full width minus padding to fit container */
     padding: 10px;
     font-size: 16px; /* Increase font size for better readability */
     text-align: right;
