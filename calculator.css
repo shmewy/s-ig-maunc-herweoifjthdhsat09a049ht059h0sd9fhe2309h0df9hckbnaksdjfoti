@@ -1,109 +1,55 @@
-
-body{
-    margin: 0;
-    padding:0;
-    line-height: 0.5;
-    background:linear-gradient(to left,#7808f0,#06bdf5);
-    font-family: sans-serif;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Light gray background */
+    font-family: 'Helvetica', sans-serif; /* Apply Helvetica as the default font */
 }
 
-.calci{
-    width: 500px;
-    padding-top: 100px;
-    padding-bottom: 100;
-    position: absolute;
-    top:50%;
-    left:70%;
-    transition:0.25px;
-    transform: translate(-50%,-50%);
-    text-align: center;
-}
-#zero{
-
-height: 55;
-width: 116;
-font-size: 20;
-    font-family: sans-serif;
-    font-weight: 300;
-
+.calculator {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #ffffff; /* Set a white background */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 420px; /* Increased width for a wider appearance */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
-#display{
-    
-    border:none;
-    background: white;
-    border-radius: 30px;
-    width: 245;
-    font-size: 20;
-    font-family: sans-serif;
-    font-weight: 300;
-    height: 60;
-    margin: auto;
-    border:2px solid white(5, 218, 255, 0.726);
-    color: black;
-
-
-
+.keys {
+    width: 100%; /* Ensures the keys container is full-width of the calculator */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four columns */
+    gap: 5px; /* Add gap between buttons */
+    margin-top: 10px; /* Space between the input and the buttons */
 }
-.button{
-    width: 55;
-    height: 55;
-    padding-top: -1;
-    font-size: 20;
+
+.keys button {
+    height: 60px; /* Slightly increased height for better clickability */
+    background-color: #eee; /* Light gray button color */
     border: none;
-    background: white;
-    font-family: sans-serif;
-    font-weight: 300;
-    border:0;
-    border-radius: 30px;
-    margin: 1.5;
-    transition:0.25px;
-    
-    
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Slightly increased font size for better readability */
+    transition: background-color 0.2s ease; /* Smooth color transition on hover */
 }
 
-h1{
-    margin-top: 300px;
-    margin-left: 100px;
-    font-family: sans-serif;
-
-    font-size:50;
-   
-    text-decoration: underline;
-
-color: white;
-text-transform: uppercase;
-font-weight: 700;}
-
-h2{
-
-    color: white;
-    margin-top: -1px;
-    font-family: sans-serif;
-    margin-left: 438px;
-}
-.operator{
-    width: 55;
-    height: 55;
-    padding-top: -1;
-    font-size: 20;
-    text-align: center;
-    color: black;
-    border: none;
-    background: white;
-    font-family: sans-serif;
-    font-weight: 500;
-    border:0;
-    border-radius: 30px;
-    margin: 1.5;
-    transition:0.25px;
-    cursor:pointer;
-    
-    
-    
+.keys button:hover {
+    background-color: #ddd; /* Slightly darker gray on hover */
 }
 
-
-.operator:hover{
-    background: #00d9ff;
+input[type="text"] {
+    width: 100%; /* Full width of the calculator */
+    padding: 12px;
+    font-size: 18px; /* Increased font size for better readability */
+    text-align: right;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    margin-bottom: 10px; /* Space above the keys */
 }
