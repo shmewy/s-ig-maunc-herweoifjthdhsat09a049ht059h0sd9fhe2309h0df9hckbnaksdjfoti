@@ -21,10 +21,10 @@ body {
     grid-template-columns: repeat(4, 1fr); /* Four columns */
     gap: 5px; /* Add gap between buttons */
     grid-template-areas: 
-        "clear clear divide multiply"
-        "seven eight nine subtract"
-        "four five six add"
-        "one two three equals"
+        "clear clear clear divide"
+        "seven eight nine multiply"
+        "four five six subtract"
+        "one two three add"
         "zero zero dot equals";
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 input[type="text"] {
-    width: 100%; /* Full width of the calculator */
+    width: 100% - 5px; /* Full width of the calculator */
     padding: 10px;
     font-size: 16px; /* Increase font size for better readability */
     text-align: right;
