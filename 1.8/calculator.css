@@ -13,7 +13,7 @@ body {
     background-color: #ffffff; /* Set a white background */
     border-radius: 8px; /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 280px; /* Set a fixed width to control the form factor */
+    width: 300px; /* Set a fixed width to control the form factor */
 }
 
 .keys {
@@ -39,7 +39,7 @@ body {
 }
 
 input[type="text"] {
-    width: 100%; /* Full width of the calculator */
+    width: 100%-20px; /* Full width of the calculator */
     padding: 10px;
     font-size: 16px; /* Increase font size for better readability */
     text-align: right;
