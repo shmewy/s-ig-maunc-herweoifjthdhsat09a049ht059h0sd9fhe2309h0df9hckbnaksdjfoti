@@ -26,7 +26,7 @@ body {
 }
 
 .keys button {
-    width: 100%; /* Full width of the grid column */
+    width: 50px; /* Full width of the grid column */
     height: 50px; /* Increase height for better clickability */
     margin: 0; /* Remove margin */
     background-color: #eee; /* Light gray button color */
