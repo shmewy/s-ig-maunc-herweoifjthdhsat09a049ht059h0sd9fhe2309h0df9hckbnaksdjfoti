@@ -9,7 +9,7 @@ body {
 
 .calculator {
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 30px;
     background-color: #ffffff; /* Set a white background */
     border-radius: 8px; /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@ body {
 .keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Four columns */
-    gap: 5px; /* Add gap between buttons */
+    gap: 10px; /* Add gap between buttons */
     width: 100%;
 }
 
