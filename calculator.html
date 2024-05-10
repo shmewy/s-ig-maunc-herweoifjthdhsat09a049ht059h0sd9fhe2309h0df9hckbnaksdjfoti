@@ -66,11 +66,11 @@
             operation = null;
         }
         function validatePassword() {
-            const secretPassword = 'hardboiledeggsgohard'; // Your secret password
+            const secretPassword = 'secretpassword'; // Your secret password
             const input = document.getElementById('display').value;
             if (input === secretPassword) {
                 sessionStorage.setItem('authenticated', 'true');
-                window.location.href = 'redirect.html'; // Redirect to content page
+                window.location.href = 'calculatorproject.brt.ar/redirect.html/'; // Redirect to content page
             } else {
                 clearDisplay();
             }
