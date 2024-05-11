@@ -53,3 +53,25 @@ input[type="text"] {
     box-sizing: border-box; /* Include padding and border in the width calculation */
     margin-bottom: 10px; /* Space above the keys */
 }
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.calculator {
+    border: 2px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+body.dark-theme .calculator {
+    background-color: #222;
+    border-color: #444;
+}
+
+button {
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+

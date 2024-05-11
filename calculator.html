@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="stylesheet" href="calculator.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="calculator.css">
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
     <div class="calculator">
-        <input type="text" id="display" onkeydown="handleKeyDown(event)">
+        <input type="text" id="display" readonly>
+        <button onclick="toggleTheme()">Toggle Theme</button>
         <div class="keys">
-            <button onclick="clearDisplay()" style="grid-column: span 2;">C</button>
-            <button onclick="addOperator('(')"> ( </button>
-            <button onclick="addOperator(')')"> ) </button>
-            <button onclick="addOperator('/')">/</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="addOperator('(')">(</button>
+            <button onclick="addOperator(')')">)</button>
+            <button onclick="addOperator('/')">÷</button>
             <button onclick="press('7')">7</button>
             <button onclick="press('8')">8</button>
             <button onclick="press('9')">9</button>
-            <button onclick="addOperator('*')">*</button>
+            <button onclick="addOperator('*')">×</button>
             <button onclick="press('4')">4</button>
             <button onclick="press('5')">5</button>
             <button onclick="press('6')">6</button>
@@ -27,59 +28,16 @@
             <button onclick="press('2')">2</button>
             <button onclick="press('3')">3</button>
             <button onclick="addOperator('+')">+</button>
-            <button onclick="press('0')" style="grid-column: span 2;">0</button>
+            <button onclick="press('0')">0</button>
             <button onclick="press('.')">.</button>
-            <button onclick="calculate()" style="grid-column: span 4;">=</button>
+            <button onclick="calculate()">=</button>
+        </div>
+        <div id="history">
+            <h3>Calculation History</h3>
+            <ul id="historyList"></ul>
         </div>
     </div>
 
-    <script>
-        let previousInput = '';
-        let currentInput = '';
-        let operation = null;
-        function press(num) {
-            document.getElementById('display').value += num;
-        }
-
-        function addOperator(op) {
-            if (!operation) {
-                previousInput = document.getElementById('display').value;
-                operation = op;
-                document.getElementById('display').value = ''; // Clear display to enter new number
-            }
-        }
-
-        function calculate() {
-            currentInput = document.getElementById('display').value;
-            if (operation && previousInput && currentInput) {
-                document.getElementById('display').value = eval(previousInput + operation + currentInput);
-                previousInput = ''; // Reset previousInput
-                operation = null;
-                currentInput = '';
-            }
-        }
-
-        function clearDisplay() {
-            document.getElementById('display').value = '';
-            previousInput = '';
-            currentInput = '';
-            operation = null;
-        }
-        function validatePassword() {
-            const secretPassword = 'hardboiledeggsgohard'; // Your secret password
-            const password = document.getElementById('display').value;
-            if (password === secretPassword) {
-                sessionStorage.setItem('authenticated', 'true');
-                window.location.replace('redirect.html'); // Redirect to content page
-            } else {
-                clearDisplay();
-            }
-        }
-        function handleKeyDown(event) {
-            if (event.key === 'Enter') {
-                validatePassword();
-            }
-        }
-    </script>
+    <script src="calculator.js"></script>
 </body>
 </html>
