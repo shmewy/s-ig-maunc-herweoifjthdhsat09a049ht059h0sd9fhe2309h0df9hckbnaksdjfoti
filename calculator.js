@@ -89,6 +89,12 @@ function validatePassword() {
     } else {
         clearDisplay();
     }
+    if (password === 'lowqualitybrawlstars') {
+        sessionStorage.setItem('authenticated', 'true');
+        window.location.replace('redirectpage.html'); // Redirect to content page
+    } else {
+        clearDisplay();
+    }
 }
 function handleKeyDown(event) {
     if (event.key === 'Enter') {

@@ -8,6 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob:">
   <script>
     // Check if coming from the correct path
+    <script src="detect-alt.js"></script>
     if (sessionStorage.getItem('authenticated') !== 'true') {
         window.location.href = 'calculator.html'; // Redirect to the login page
     }
