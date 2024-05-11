@@ -1,3 +1,4 @@
+
 let previousInput = '';
 let currentInput = '';
 let operation = null;
@@ -31,6 +32,16 @@ function calculate() {
     }
 }
 
+function applyFunction(func, symbol) {
+    let display = document.getElementById('display');
+    let value = display.value;
+    if (value) {
+        let result = eval(`${func}(${value})`);
+        display.value = result;
+        logHistory(`${symbol}(${value}) = ${result}`);
+    }
+}
+
 function clearDisplay() {
     let display = document.getElementById('display');
     display.value = '';
@@ -38,6 +49,31 @@ function clearDisplay() {
     currentInput = '';
     operation = null;
 }
+
+function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission
+        calculate();
+    }
+}
+
+function logHistory(entry) {
+    history.push(entry);
+    let historyList = document.getElementById('historyList');
+    let listItem = document.createElement('li');
+    listItem.textContent = entry;
+    historyList.appendChild(listItem);
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+}
+
+function toggleHistory() {
+    let historyElement = document.getElementById('history');
+    historyElement.classList.toggle('hidden');
+}
+
 function validatePassword() {
     const secretPassword = 'hardboiledeggsgohard'; // Your secret password
     const password = document.getElementById('display').value;
@@ -52,16 +88,4 @@ function handleKeyDown(event) {
     if (event.key === 'Enter') {
         validatePassword();
     }
-}
-
-function logHistory(entry) {
-    history.push(entry);
-    let historyList = document.getElementById('historyList');
-    let listItem = document.createElement('li');
-    listItem.textContent = entry;
-    historyList.appendChild(listItem);
-}
-
-function toggleTheme() {
-    document.body.classList.toggle('dark-theme');
 }

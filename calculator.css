@@ -4,16 +4,17 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4; /* Light gray background */
+    color: black; /* Default text color */
     font-family: 'Helvetica', sans-serif; /* Apply Helvetica as the default font */
 }
 
 .calculator {
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     padding: 20px;
     background-color: #ffffff; /* Set a white background */
     border-radius: 8px; /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 420px; /* Increased width for a wider appearance */
+    width: 420px; /* Specific width for the calculator */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,54 +25,71 @@ body {
     width: 100%; /* Ensures the keys container is full-width of the calculator */
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Four columns */
-    gap: 5px; /* Add gap between buttons */
+    gap: 5px; /* Gap between buttons */
     margin-top: 10px; /* Space between the input and the buttons */
 }
 
 .keys button {
-    height: 60px; /* Slightly increased height for better clickability */
+    height: 60px;
     background-color: #eee; /* Light gray button color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px; /* Slightly increased font size for better readability */
+    font-size: 18px;
     transition: background-color 0.2s ease; /* Smooth color transition on hover */
 }
 
 .keys button:hover {
-    background-color: #ddd; /* Slightly darker gray on hover */
+    background-color: #ddd; /* Darker gray on hover */
 }
 
 input[type="text"] {
-    width: 100%; /* Full width of the calculator */
-    padding: 12px;
-    font-size: 18px; /* Increased font size for better readability */
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
     text-align: right;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
     outline: none;
-    box-sizing: border-box; /* Include padding and border in the width calculation */
-    margin-bottom: 10px; /* Space above the keys */
-}
-body.dark-theme {
-    background-color: #333;
-    color: #fff;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
-.calculator {
-    border: 2px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
+#history {
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
 }
 
-body.dark-theme .calculator {
-    background-color: #222;
-    border-color: #444;
+#history.hidden {
+    display: none;
 }
 
-button {
-    padding: 5px;
-    margin: 5px;
-    cursor: pointer;
+.dark-theme {
+    background-color: #333; /* Dark background for the entire body */
+    color: #fff; /* White text color */
 }
 
+.dark-theme .calculator {
+    background-color: #222; /* Dark background for the calculator */
+    border-color: #444; /* Darker border */
+}
+
+.dark-theme .keys button {
+    background-color: #555; /* Darker button color for the dark theme */
+    color: #fff; /* White text color for buttons */
+}
+
+.dark-theme .keys button:hover {
+    background-color: #666; /* Even darker gray on hover */
+}
+
+.dark-theme input[type="text"] {
+    background-color: #333; /* Dark background for input */
+    color: #fff; /* White text color for input */
+    border-color: #444; /* Darker border for input */
+}
+
+.dark-theme #history {
+    border-top-color: #444; /* Darker border color for history */
+}

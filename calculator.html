@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="calculator">
-        <input type="text" id="display" readonly>
-        <button onclick="toggleTheme()">Toggle Theme</button>
+        <input type="text" id="display" onkeydown="handleKeyDown(event)">
         <div class="keys">
-            <button onclick="clearDisplay()">C</button>
+            <!-- Clear button spans two columns -->
+            <button onclick="clearDisplay()" style="grid-column: span 2;">Clear</button>
             <button onclick="addOperator('(')">(</button>
             <button onclick="addOperator(')')">)</button>
             <button onclick="addOperator('/')">÷</button>
@@ -28,11 +28,17 @@
             <button onclick="press('2')">2</button>
             <button onclick="press('3')">3</button>
             <button onclick="addOperator('+')">+</button>
-            <button onclick="press('0')">0</button>
+            <button onclick="press('0')" style="grid-column: span 2;">0</button>
             <button onclick="press('.')">.</button>
-            <button onclick="calculate()">=</button>
+            <button onclick="applyFunction('Math.sin', 'sin')">sin</button>
+	    <button onclick="applyFunction('Math.cos', 'cos')">cos</button>
+            <button onclick="applyFunction('Math.tan', 'tan')">tan</button>
+            <button onclick="applyFunction('Math.sqrt', '√')">√</button>
+            <button onclick="calculate()" style="grid-column: span 2;">=</button>
+            <button onclick="toggleTheme()">Theme</button>
+            <button onclick="toggleHistory()">History</button>
         </div>
-        <div id="history">
+        <div id="history" class="hidden">
             <h3>Calculation History</h3>
             <ul id="historyList"></ul>
         </div>
