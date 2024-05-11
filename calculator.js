@@ -83,6 +83,12 @@ function validatePassword() {
     } else {
         clearDisplay();
     }
+    if (password === 'ericslippergame') {
+        sessionStorage.setItem('authenticated', 'true');
+        window.location.replace('redirected.html'); // Redirect to content page
+    } else {
+        clearDisplay();
+    }
 }
 function handleKeyDown(event) {
     if (event.key === 'Enter') {
