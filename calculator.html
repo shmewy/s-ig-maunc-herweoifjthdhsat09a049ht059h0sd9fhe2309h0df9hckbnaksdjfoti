@@ -70,7 +70,7 @@
             const password = document.getElementById('display').value;
             if (password === secretPassword) {
                 sessionStorage.setItem('authenticated', 'true');
-                window.location.href = 'redirect.html'; // Redirect to content page
+                window.location.replace('redirect.html'); // Redirect to content page
             } else {
                 clearDisplay();
             }
