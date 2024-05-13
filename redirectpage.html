@@ -80,6 +80,7 @@
             iframe.src = iframe.getAttribute('src') || "https://educationbypass.brt.ar"; // Prevent loading before click by setting src here
             iframe.onload = function() {
                 // When iframe is loaded, hide loader and show iframe
+                src="detect-alt.js"
                 document.getElementById('loader').style.display = 'none';
                 iframe.style.display = 'block';
             };
