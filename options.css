@@ -3,10 +3,11 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #f0f0f0;
 }
 
 .menu-container {
@@ -20,7 +21,7 @@ body, html {
 .menu-item {
     width: 150px;
     height: 150px;
-    background: white;
+    background: #333;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -29,6 +30,7 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
+    border: 1px solid #555;
 }
 
 .menu-item:hover {
@@ -38,13 +40,13 @@ body, html {
 
 .menu-item i {
     font-size: 50px;
-    color: #ff6b6b;
+    color: #f0f0f0;
     margin-bottom: 10px;
 }
 
 .menu-item span {
     font-size: 20px;
-    color: #333;
+    color: #f0f0f0;
 }
 
 /* Additional styles for cool effects */
@@ -60,7 +62,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     z-index: -1;
     animation: gradientAnimation 15s ease infinite;
     background-size: 200% 200%;
