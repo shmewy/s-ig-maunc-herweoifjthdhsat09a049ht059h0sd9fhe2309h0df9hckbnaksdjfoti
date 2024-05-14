@@ -15,6 +15,7 @@
 </head>
 <body>
     <div id="iframe-container"></div>
+    <div id="countdown"></div>
     <script>
         // Function to handle redirection based on user input
         function handleRedirection() {
@@ -31,24 +32,40 @@
             }
         }
 
+        // Function to show the ad with countdown
+        function showAdWithCountdown() {
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; // Replace with the actual URL
+            iframe.width = '600';
+            iframe.height = '400';
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+
+            const countdownDiv = document.getElementById('countdown');
+            let timeLeft = 5; // Countdown from 5 seconds
+
+            const countdownInterval = setInterval(() => {
+                countdownDiv.innerHTML = `Ad will close in ${timeLeft} seconds...`;
+                timeLeft--;
+
+                if (timeLeft < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('iframe-container').removeChild(iframe);
+                    countdownDiv.innerHTML = '';
+                    handleRedirection();
+                }
+            }, 1000);
+
+            // Append the iframe to the container
+            document.getElementById('iframe-container').appendChild(iframe);
+        }
+
         // Check the user's level of access and act accordingly
         if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
-            window.location.href = 'calculator.html'; // Redirect to the calculator page
-            setTimeout(handleRedirection, 6969);
+            showAdWithCountdown();
         } else if (sessionStorage.getItem('levelOfAccess') === 'noAds') {
             handleRedirection();
         }
-
-        // Create and configure the iframe
-        const iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; // Replace with the actual URL
-        iframe.width = '600';
-        iframe.height = '400';
-        iframe.frameBorder = '0';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-
-        // Append the iframe to the container
-        document.getElementById('iframe-container').appendChild(iframe);
     </script>
 </body>
 </html>
