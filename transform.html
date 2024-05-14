@@ -14,7 +14,7 @@
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
-    <div id="iframe-container"></div>
+    <div id="gif-container"></div>
     <div id="countdown"></div>
     <script>
         // Function to handle redirection based on user input
@@ -32,14 +32,12 @@
             }
         }
 
-        // Function to show the ad with countdown
-        function showAdWithCountdown() {
-            const iframe = document.createElement('iframe');
-            iframe.src = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; // Replace with the actual URL
-            iframe.width = '600';
-            iframe.height = '400';
-            iframe.frameBorder = '0';
-            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        // Function to show the GIF with countdown
+        function showGifWithCountdown() {
+            const gif = document.createElement('img');
+            gif.src = 'rickroll.gif'; // Replace with the actual URL of the GIF
+            gif.width = '600';
+            gif.height = '400';
 
             const countdownDiv = document.getElementById('countdown');
             let timeLeft = 5; // Countdown from 5 seconds
@@ -50,19 +48,19 @@
 
                 if (timeLeft < 0) {
                     clearInterval(countdownInterval);
-                    document.getElementById('iframe-container').removeChild(iframe);
+                    document.getElementById('gif-container').removeChild(gif);
                     countdownDiv.innerHTML = '';
                     handleRedirection();
                 }
             }, 1000);
 
-            // Append the iframe to the container
-            document.getElementById('iframe-container').appendChild(iframe);
+            // Append the GIF to the container
+            document.getElementById('gif-container').appendChild(gif);
         }
 
         // Check the user's level of access and act accordingly
         if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
-            showAdWithCountdown();
+            showGifWithCountdown();
         } else if (sessionStorage.getItem('levelOfAccess') === 'noAds') {
             handleRedirection();
         }
