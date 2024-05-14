@@ -4,32 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        #gif-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #countdown {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
     <script>
         // Check if coming from the correct path
         if (sessionStorage.getItem('nextstep') !== 'true') {
             window.location.href = 'calculator.html'; // Redirect to the calculator page
         }
     </script>
-    <link rel="stylesheet" href="login.css">
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
-    <div id="gif-container"></div>
-    <div id="countdown"></div>
+    <div id="gif-container">
+        <div id="countdown"></div>
+    </div>
     <script>
         // Function to handle redirection based on user input
         function handleRedirection() {
-            let wheretogo = prompt('Type "a" for MC. Type "b" for proxy.');
-            if (wheretogo === 'a') {
-                sessionStorage.setItem('authenticated', 'true');
-                window.location.href = 'redirect.html';
-            } else if (wheretogo === 'b') {
-                sessionStorage.setItem('authenticated', 'true');
-                window.location.href = 'redirectpage.html';
-            } else {
-                alert('That wasn\'t an option. Goodbye');
-                window.close();
-            }
+            sessionStorage.setItem('optionspage', 'true')
+            window.location.href = 'options.html'
         }
 
         // Function to show the GIF with countdown
@@ -38,6 +51,8 @@
             gif.src = 'rickroll.gif'; // Replace with the actual URL of the GIF
             gif.width = '600';
             gif.height = '400';
+            gif.style.borderRadius = '10px';
+            gif.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
 
             const countdownDiv = document.getElementById('countdown');
             let timeLeft = 5; // Countdown from 5 seconds
