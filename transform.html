@@ -17,7 +17,7 @@
     <div id="iframe-container"></div>
     <script>
         // Check if coming from the correct path
-        if (sessionStorage.getItem('levelOfAccess') !== 'yesAds') {
+        if (sessionStorage.getItem('levelOfAccess') == 'yesAds') {
             window.location.href = 'calculator.html'; // Redirect to the login page
                 const iframe = document.createElement('iframe');
             setTimeout(() => {
@@ -33,7 +33,7 @@
                     close()
                 }
             }, 6969);
-        }else{
+        }else if(sessionStorage.getItem('levelOfAccess') == 'noAds'){
             let wheretogo = prompt('type a for mc. b for proxy.');
             if(wheretogo === 'a'){
                 sessionStorage.setItem('authenticated', 'true')
