@@ -75,21 +75,9 @@ function toggleHistory() {
 }
 
 function validatePassword() {
-    const secretPassword = 'hardboiledeggsgohard'; // Your secret password
+    const secretPassword = 'boilingoilyfoil'; // Your secret password
     const password = document.getElementById('display').value;
     if (password === secretPassword) {
-        sessionStorage.setItem('nextstep', 'true');
-        window.location.replace('login.html'); // Redirect to content page
-    } else {
-        clearDisplay();
-    }
-    if (password === 'ericslippergame') {
-        sessionStorage.setItem('nextstep', 'true');
-        window.location.replace('login.html'); // Redirect to content page
-    } else {
-        clearDisplay();
-    }
-    if (password === 'proxypage') {
         sessionStorage.setItem('nextstep', 'true');
         window.location.replace('login.html'); // Redirect to content page
     } else {
