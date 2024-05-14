@@ -7,7 +7,7 @@
     <script>
         // Check if coming from the correct path
         if (sessionStorage.getItem('nextstep') !== 'true') {
-            window.location.href = 'calculator.html'; // Redirect to the login page
+            window.location.href = 'calculator.html'; // Redirect to the calculator page
         }
     </script>
     <link rel="stylesheet" href="login.css">
@@ -16,45 +16,39 @@
 <body>
     <div id="iframe-container"></div>
     <script>
-        // Check if coming from the correct path
-        if (sessionStorage.getItem('levelOfAccess') == 'yesAds') {
-            window.location.href = 'calculator.html'; // Redirect to the login page
-                const iframe = document.createElement('iframe');
-            setTimeout(() => {
-                let wheretogo = prompt('type a for mc. b for proxy.');
-                if(wheretogo === 'a'){
-                    sessionStorage.setItem('authenticated', 'true')
-                    window.location.href = 'redirect.html'
-                }else if(wheretogo === 'b'){
-                    sessionStorage.setItem('authenticated', 'true')
-                    window.location.href = 'redirectpage.html'
-                }else{
-                    alert('that wasnt an option. goodbye')
-                    close()
-                }
-            }, 6969);
-        }else if(sessionStorage.getItem('levelOfAccess') == 'noAds'){
-            let wheretogo = prompt('type a for mc. b for proxy.');
-            if(wheretogo === 'a'){
-                sessionStorage.setItem('authenticated', 'true')
-                window.location.href = 'redirect.html'
-            }else if(wheretogo === 'b'){
-                sessionStorage.setItem('authenticated', 'true')
-                window.location.href = 'redirectpage.html'
-            }else{
-                alert('that wasnt an option. goodbye')
-                close()
+        // Function to handle redirection based on user input
+        function handleRedirection() {
+            let wheretogo = prompt('Type "a" for MC. Type "b" for proxy.');
+            if (wheretogo === 'a') {
+                sessionStorage.setItem('authenticated', 'true');
+                window.location.href = 'redirect.html';
+            } else if (wheretogo === 'b') {
+                sessionStorage.setItem('authenticated', 'true');
+                window.location.href = 'redirectpage.html';
+            } else {
+                alert('That wasn\'t an option. Goodbye');
+                window.close();
             }
         }
-            iframe.src = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; // Replace with the actual URL
-            iframe.width = '600';
-            iframe.height = '400';
-            iframe.frameBorder = '0';
-            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
 
-            // Append the iframe to the container
-            document.getElementById('iframe-container').appendChild(iframe);
+        // Check the user's level of access and act accordingly
+        if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
+            window.location.href = 'calculator.html'; // Redirect to the calculator page
+            setTimeout(handleRedirection, 6969);
+        } else if (sessionStorage.getItem('levelOfAccess') === 'noAds') {
+            handleRedirection();
         }
+
+        // Create and configure the iframe
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; // Replace with the actual URL
+        iframe.width = '600';
+        iframe.height = '400';
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+
+        // Append the iframe to the container
+        document.getElementById('iframe-container').appendChild(iframe);
     </script>
 </body>
 </html>
