@@ -101,3 +101,4 @@ function handleKeyDown(event) {
         validatePassword();
     }
 }
+toggleTheme()
