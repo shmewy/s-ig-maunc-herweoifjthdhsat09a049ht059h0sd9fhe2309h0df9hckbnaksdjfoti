@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script>
+        // Check if coming from the correct path
+        if (sessionStorage.getItem('nextstep') !== 'true') {
+            window.location.href = 'calculator.html'; // Redirect to the login page
+        }
+    </script>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+    <div class="login-container">
+        <form id="login-form">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

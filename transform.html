@@ -1,0 +1,62 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script>
+        // Check if coming from the correct path
+        if (sessionStorage.getItem('nextstep') !== 'true') {
+            window.location.href = 'calculator.html'; // Redirect to the login page
+        }
+    </script>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+    <div id="iframe-container"></div>
+    <script>
+        // Check if coming from the correct path
+        if (sessionStorage.getItem('levelOfAccess') !== 'yesAds') {
+            window.location.href = 'calculator.html'; // Redirect to the login page
+            setTimeout(() => {
+                const iframe = document.createElement('iframe');
+            }, 5000);
+            setTimeout(() => {
+                let wheretogo = prompt('type a for mc. b for proxy.');
+                if(wheretogo === 'a'){
+                    sessionStorage.setItem('authenticated', 'true')
+                    window.location.href = 'redirect.html'
+                }else if(wheretogo === 'b'){
+                    sessionStorage.setItem('authenticated', 'true')
+                    window.location.href = 'redirectpage.html'
+                }else{
+                    alert('that wasnt an option. goodbye')
+                    close()
+                }
+            }, 6969);
+        }else{
+            let wheretogo = prompt('type a for mc. b for proxy.');
+            if(wheretogo === 'a'){
+                sessionStorage.setItem('authenticated', 'true')
+                window.location.href = 'redirect.html'
+            }else if(wheretogo === 'b'){
+                sessionStorage.setItem('authenticated', 'true')
+                window.location.href = 'redirectpage.html'
+            }else{
+                alert('that wasnt an option. goodbye')
+                close()
+            }
+        }
+            iframe.src = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; // Replace with the actual URL
+            iframe.width = '600';
+            iframe.height = '400';
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+
+            // Append the iframe to the container
+            document.getElementById('iframe-container').appendChild(iframe);
+        }
+    </script>
+</body>
+</html>

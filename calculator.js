@@ -78,19 +78,19 @@ function validatePassword() {
     const secretPassword = 'hardboiledeggsgohard'; // Your secret password
     const password = document.getElementById('display').value;
     if (password === secretPassword) {
-        sessionStorage.setItem('authenticated', 'true');
+        sessionStorage.setItem('nextstep', 'true');
         window.location.replace('redirect.html'); // Redirect to content page
     } else {
         clearDisplay();
     }
     if (password === 'ericslippergame') {
-        sessionStorage.setItem('authenticated', 'true');
+        sessionStorage.setItem('nextstep', 'true');
         window.location.replace('redirected.html'); // Redirect to content page
     } else {
         clearDisplay();
     }
     if (password === 'proxypage') {
-        sessionStorage.setItem('authenticated', 'true');
+        sessionStorage.setItem('nextstep', 'true');
         window.location.replace('redirectpage.html'); // Redirect to content page
     } else {
         clearDisplay();
