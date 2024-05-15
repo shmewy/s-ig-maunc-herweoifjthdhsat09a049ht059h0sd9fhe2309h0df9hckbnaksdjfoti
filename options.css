@@ -9,7 +9,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #FFFFE0; /* Light Yellow */
+    color: #FFFFFF; /* Light Yellow */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds a shadow for better readability */
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
