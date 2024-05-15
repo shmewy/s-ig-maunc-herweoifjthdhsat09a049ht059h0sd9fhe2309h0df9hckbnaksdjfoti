@@ -11,6 +11,8 @@ body, html {
     align-items: center;
     color: #FFFFE0; /* Light Yellow */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds a shadow for better readability */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .logo-container {
@@ -73,7 +75,7 @@ body, html {
 .footer {
     position: absolute;
     bottom: 8px;
-    left: 40%;
+    left: 43%;
     width: 100%;
     text-align: center;
     font-size: 16px;
