@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="icon" href="favicon.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,14 +17,21 @@
             margin: 0;
             text-align: center;
         }
-        #gif-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .ad-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
         }
-        #countdown {
+        .ad-gif {
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .countdown {
+            font-size: 1.2em;
             margin-top: 10px;
-            font-size: 18px;
         }
     </style>
     <script>
@@ -35,42 +43,33 @@
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
-    <div id="gif-container">
-        <div id="countdown"></div>
+    <div class="ad-container" id="gif-container">
+        <img src="rickroll.gif" alt="Ad GIF" class="ad-gif">
+        <div class="countdown" id="countdown">This rickroll will close in <span id="timer">10</span> seconds...</div>
     </div>
+
     <script>
         // Function to handle redirection based on user input
         function handleRedirection() {
-            sessionStorage.setItem('optionspage', 'true')
-            window.location.href = 'options.html'
+            sessionStorage.setItem('optionspage', 'true');
+            window.location.href = 'options.html';
         }
 
         // Function to show the GIF with countdown
         function showGifWithCountdown() {
-            const gif = document.createElement('img');
-            gif.src = 'rickroll.gif'; // Replace with the actual URL of the GIF
-            gif.width = '600';
-            gif.height = '400';
-            gif.style.borderRadius = '10px';
-            gif.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
-
-            const countdownDiv = document.getElementById('countdown');
-            let timeLeft = 5; // Countdown from 5 seconds
+            const countdownElement = document.getElementById('timer');
+            let timeLeft = 10; // Countdown from 5 seconds
 
             const countdownInterval = setInterval(() => {
-                countdownDiv.innerHTML = `This rickroll will close in ${timeLeft} seconds...`;
+                countdownElement.textContent = timeLeft;
                 timeLeft--;
 
                 if (timeLeft < 0) {
                     clearInterval(countdownInterval);
-                    document.getElementById('gif-container').removeChild(gif);
-                    countdownDiv.innerHTML = '';
+                    document.getElementById('gif-container').style.display = 'none';
                     handleRedirection();
                 }
             }, 1000);
-
-            // Append the GIF to the container
-            document.getElementById('gif-container').appendChild(gif);
         }
 
         // Check the user's level of access and act accordingly
