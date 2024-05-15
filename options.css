@@ -33,7 +33,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
     margin-top: 300px; /* Adjust as needed */
 }
 
