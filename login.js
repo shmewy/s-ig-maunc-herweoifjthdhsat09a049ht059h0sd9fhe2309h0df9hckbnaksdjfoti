@@ -9,10 +9,10 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     if (username === 'friendofshmewy' && password === 'shmewyisagoodfriend') {
         alert('yayyyy thanks for beign a gud persun');
         sessionStorage.setItem('levelOfAccess','noAds')
-        window.location.href = 'transform.html';
+        window.location.replace('transform.html');
     } else {
         alert('You will have a limited experience');
         sessionStorage.setItem('levelOfAccess', 'yesAds')
-        window.location.href = 'transform.html'
+        window.location.replace('transform.html')
     }
 });
