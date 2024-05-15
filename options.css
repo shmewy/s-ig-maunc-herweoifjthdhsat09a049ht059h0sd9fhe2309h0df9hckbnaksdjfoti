@@ -9,7 +9,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #FFFFFF; /* Light Yellow */
+    color: #FFFFFF;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds a shadow for better readability */
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -58,13 +58,13 @@ body, html {
 
 .menu-item i {
     font-size: 50px;
-    color: #FFFFE0; /* Light Yellow */
+    color: #FFFFFF; /* Light Yellow */
     margin-bottom: 10px;
 }
 
 .menu-item span {
     font-size: 20px;
-    color: #FFFFE0; /* Light Yellow */
+    color: #FFFFFF; /* Light Yellow */
 }
 
 .menu-item:active {
