@@ -24,14 +24,14 @@ body, html {
 .logo {
     width: 550px;
     height: auto;
-    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.7)); /* Adds a shadow effect */
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7)); /* Adds a shadow effect */
 }
 
 .menu-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     margin-top: 300px; /* Adjust as needed */
 }
 
@@ -47,7 +47,6 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    border: 1px solid #006278;
 }
 
 .menu-item:hover {
@@ -69,4 +68,13 @@ body, html {
 .menu-item:active {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #FFFFE0; /* Light Yellow */
 }
