@@ -14,13 +14,13 @@ body, html {
 
 .logo-container {
     position: absolute;
-    top: 1px;
+    top: 0;
     margin-left: auto;
     margin-right: auto;
 }
 
 .logo {
-    width: 650px;
+    width: 550px;
     height: auto;
 }
 
