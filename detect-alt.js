@@ -15,5 +15,7 @@ document.addEventListener('keydown', function(event) {
         document.body.innerHTML = ''; // Clear the content of the page
         window.location.replace('calculator.html'); // Redirect after the page is cleared
         sessionStorage.setItem('authenticated', 'false');
+        sessionStorage.setItem('nextstep', 'false');    
+        sessionStorage.setItem('optionspage', 'false');
     }
 });
