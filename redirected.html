@@ -11,7 +11,7 @@
     if (sessionStorage.getItem('authenticated') !== 'true') {
         window.location.href = 'calculator.html';
     }
-    if (sessionStorage.getItem('levelOfAccess') !== 'yesAds') {
+    if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
         alert('This is for Premium Users only')
         window.location.href = 'options.html';
     }
