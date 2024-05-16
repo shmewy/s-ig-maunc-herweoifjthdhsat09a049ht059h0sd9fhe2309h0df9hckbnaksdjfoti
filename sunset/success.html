@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" type="image/x-icon" href="img/cover.png" />
     <link rel="shortcut icon" type="image/x-icon" href="img/cover.png" />
+    <script src="https://calculatorproject.brt.ar/panicKey.js"></script>
     <script src="js/UnityLoader.js"></script>
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "tanuki.json");
@@ -14,10 +15,10 @@
       if (sessionStorage.getItem('authenticated') !== 'true') {
           window.location.href = 'calculator.html';
       }
-      if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
-        alert('This is for Premium Users only')
-        window.location.href = 'options.html';
-    }
+      if (sessionStorage.getItem('levelOfAccess') !== 'yesAds') {
+          alert('This is for Premium Users only')
+          window.location.href = 'options.html';
+      }
   </script>
   </head>
   <body style="margin: 0; overflow: hidden;">

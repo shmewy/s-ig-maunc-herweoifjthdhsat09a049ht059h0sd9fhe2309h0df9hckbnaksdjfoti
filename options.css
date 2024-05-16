@@ -30,13 +30,13 @@ body, html {
 
 .menu-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px; /* Further reduced gap */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* Further reduced gap */
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
     max-width: 100%;
-    height: 190px; /* Adjusted height for better fit */
+    height: 140px; /* Adjusted height for better fit */
     padding: 0 20px; /* Adjusted padding for better fit */
     margin-top: 300px;
 }

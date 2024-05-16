@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="settings.js"></script>
+    <script src="panicKey.js"></script>
     <title>Calculator</title>
+    <script>
+        if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
+            alert('This is for Premium Users only')
+            window.location.href = 'options.html';
+        }
+    </script>
     <link rel="icon" href="favicon.png" type="image/png">
     <style>
         body {

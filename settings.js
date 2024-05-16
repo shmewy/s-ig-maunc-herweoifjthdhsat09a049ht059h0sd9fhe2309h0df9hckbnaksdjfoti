@@ -9,20 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const openBlankPageButton = document.getElementById('open-blank-page');
     const backButton = document.getElementById('back-button'); 
 
-  
     function saveSettings(key, url) {
         localStorage.setItem('panicKey', key);
         localStorage.setItem('panicUrl', url);
     }
 
-   
     function loadSettings() {
         return {
             panicKey: localStorage.getItem('panicKey'),
             panicUrl: localStorage.getItem('panicUrl')
         };
     }
-
 
     panicKeyInput.addEventListener('keydown', (e) => {
         isSettingKey = true;
@@ -51,17 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         panicUrl = settings.panicUrl;
         panicUrlInput.value = panicUrl;
     }
-
-    document.addEventListener('keydown', (e) => {
-        if (!isSettingKey && e.key === panicKey) {
-            let containshttps = text.includes("https://");
-            if (containshttps == false){
-                window.location.replace(('https://').concat(panicUrl));
-            }else{
-                window.location.replace(panicUrl);
-            }
-        }
-    });
 
     openBlankPageButton.addEventListener('click', () => {
         close();
