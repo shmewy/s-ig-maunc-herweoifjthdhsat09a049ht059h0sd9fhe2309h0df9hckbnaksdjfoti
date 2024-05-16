@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isSettingKey && e.key === panicKey) {
             let containshttps = text.includes("https://");
             if (containshttps == false){
-                window.location.replace('https://'.concat(panicUrl));
+                window.location.replace(('https://').concat(panicUrl));
             }else{
                 window.location.replace(panicUrl);
             }
@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     openBlankPageButton.addEventListener('click', () => {
+        close();
         const win = window.open();
         win.document.body.style.margin = '0';
         win.document.body.style.height = '100%';
@@ -74,10 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.style.margin = '0';
         iframe.src = 'https://calculatorproject.brt.ar/settings.html';
         win.document.body.appendChild(iframe);
-        close();
     });
 
-    // Navigate back to options.html
     backButton.addEventListener('click', () => {
         sessionStorage.setItem('optionspage', 'true');
         window.location.replace('options.html');
