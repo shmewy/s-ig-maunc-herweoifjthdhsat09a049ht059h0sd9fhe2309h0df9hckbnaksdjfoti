@@ -5,23 +5,24 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
-    background-image: url('blurredbackground.png'); /* Update this to your actual background image path */
+    background-image: url('blurredbackground.png'); 
     background-size: cover;
     margin: 0;
+    color: #ffffff;
 }
 
 .settings-container {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 300px;
     text-align: center;
 }
 
 .settings-container h1 {
     margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .setting-item {
@@ -32,6 +33,7 @@ body {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #ffffff;
 }
 
 .setting-item input {
@@ -40,6 +42,8 @@ body {
     width: calc(100% - 22px);
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000000;
 }
 
 button {
@@ -52,29 +56,28 @@ button {
 }
 
 #save-settings {
-    background-color: #007bff;
+    background-color: #1e90ff; 
     color: white;
 }
 
 #save-settings:hover {
-    background-color: #0056b3;
+    background-color: #1c86ee; 
 }
 
 #open-blank-page {
-    background-color: #ff0000;
+    background-color: #dc143c;
     color: white;
 }
 
 #open-blank-page:hover {
-    background-color: #cc0000;
+    background-color: #b22222;
 }
 
 #back-button {
-    background-color: #6c757d;
+    background-color: #2e8b57;
     color: white;
 }
 
 #back-button:hover {
-    background-color: #5a6268;
+    background-color: #228b22;
 }
-

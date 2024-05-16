@@ -15,7 +15,7 @@ function addOperator(op) {
     if (!operation) {
         previousInput = display.value;
         operation = op;
-        display.value = ''; // Clear display to enter new number
+        display.value = '';
     }
 }
 
@@ -52,8 +52,7 @@ function clearDisplay() {
 
 function handleKeyDown(event) {
     if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent form submission
-        calculate();
+        event.preventDefault(); 
     }
 }
 
@@ -75,11 +74,11 @@ function toggleHistory() {
 }
 
 function validatePassword() {
-    const secretPassword = 'LunateIsFire'; // Your secret password
+    const secretPassword = 'LunateIsFire';
     const password = document.getElementById('display').value;
     if (password === secretPassword) {
         sessionStorage.setItem('nextstep', 'true');
-        window.location.replace('login.html'); // Redirect to content page
+        window.location.replace('login.html'); 
     } else {
         clearDisplay();
     }

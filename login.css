@@ -17,7 +17,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     text-align: center;
-    width: 250px; /* Adjusted width for smaller login box */
+    width: 250px; 
 }
 
 form {
@@ -26,7 +26,7 @@ form {
 }
 
 h2, h4 {
-    margin: 0 0 10px; /* Adjusted margin */
+    margin: 0 0 10px; 
 }
 
 label {
@@ -36,8 +36,8 @@ label {
 }
 
 input {
-    margin-bottom: 10px; /* Adjusted margin */
-    padding: 8px; /* Adjusted padding */
+    margin-bottom: 10px;
+    padding: 8px; 
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
@@ -55,7 +55,7 @@ button {
     background: #002c5c;
     color: #fff;
     border: none;
-    padding: 8px; /* Adjusted padding */
+    padding: 8px;
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s ease;

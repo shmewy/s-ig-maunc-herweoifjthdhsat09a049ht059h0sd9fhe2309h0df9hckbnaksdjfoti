@@ -4,7 +4,6 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     
     const passcode = document.getElementById('password').value;
 
-    // Replace with actual authentication logic
     if (passcode === 'MoonShineUser') {
         alert('Welcome to Lunate, Premium User');
         sessionStorage.setItem('levelOfAccess','noAds')

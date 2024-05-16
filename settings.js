@@ -7,15 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const panicUrlInput = document.getElementById('panic-url');
     const saveSettingsButton = document.getElementById('save-settings');
     const openBlankPageButton = document.getElementById('open-blank-page');
-    const backButton = document.getElementById('back-button'); // Assuming you have this element
+    const backButton = document.getElementById('back-button'); 
 
-    // Function to save settings to localStorage
+  
     function saveSettings(key, url) {
         localStorage.setItem('panicKey', key);
         localStorage.setItem('panicUrl', url);
     }
 
-    // Function to load settings from localStorage
+   
     function loadSettings() {
         return {
             panicKey: localStorage.getItem('panicKey'),
@@ -23,15 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Set the panic key when the user presses a key in the input field
+
     panicKeyInput.addEventListener('keydown', (e) => {
         isSettingKey = true;
         panicKey = e.key;
         panicKeyInput.value = panicKey;
-        e.preventDefault();  // Prevent the default action for the key
+        e.preventDefault();
     });
 
-    // Save the settings when the user clicks the save button
     saveSettingsButton.addEventListener('click', () => {
         panicUrl = panicUrlInput.value || 'about:blank';
         if (panicKey) {
@@ -43,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Load the saved settings and set up the panic key listener
     const settings = loadSettings();
     if (settings.panicKey) {
         panicKey = settings.panicKey;
@@ -54,15 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
         panicUrlInput.value = panicUrl;
     }
 
-    // Listen for the panic key press and perform the panic action
     document.addEventListener('keydown', (e) => {
         if (!isSettingKey && e.key === panicKey) {
-            // Perform the panic action (e.g., redirect to the panic URL)
+
             window.location.replace(panicUrl || 'about:blank');
         }
     });
 
-    // Open a blank page when the button is clicked
     openBlankPageButton.addEventListener('click', () => {
         const win = window.open();
         win.document.body.style.margin = '0';

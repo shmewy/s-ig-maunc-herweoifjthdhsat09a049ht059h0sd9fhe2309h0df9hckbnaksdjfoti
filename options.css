@@ -10,9 +10,9 @@ body, html {
     justify-content: center;
     align-items: center;
     color: #FFFFFF;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds a shadow for better readability */
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    overflow-y: hidden; 
+    overflow-x: hidden;
 }
 
 .logo-container {
@@ -26,7 +26,7 @@ body, html {
 .logo {
     width: 550px;
     height: auto;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7)); /* Adds a shadow effect */
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7)); 
 }
 
 .menu-container {
@@ -34,7 +34,7 @@ body, html {
     justify-content: center;
     align-items: center;
     gap: 40px;
-    margin-top: 300px; /* Adjust as needed */
+    margin-top: 300px; 
 }
 
 .menu-item {
@@ -58,13 +58,13 @@ body, html {
 
 .menu-item i {
     font-size: 50px;
-    color: #FFFFFF; /* Light Yellow */
+    color: #FFFFFF; 
     margin-bottom: 10px;
 }
 
 .menu-item span {
     font-size: 20px;
-    color: #FFFFFF; /* Light Yellow */
+    color: #FFFFFF; 
 }
 
 .menu-item:active {
