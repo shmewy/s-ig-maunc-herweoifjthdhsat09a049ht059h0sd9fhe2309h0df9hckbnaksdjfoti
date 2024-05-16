@@ -75,7 +75,7 @@ function toggleHistory() {
 }
 
 function validatePassword() {
-    const secretPassword = 'boilingoilyfoil'; // Your secret password
+    const secretPassword = 'LunateIsFire'; // Your secret password
     const password = document.getElementById('display').value;
     if (password === secretPassword) {
         sessionStorage.setItem('nextstep', 'true');

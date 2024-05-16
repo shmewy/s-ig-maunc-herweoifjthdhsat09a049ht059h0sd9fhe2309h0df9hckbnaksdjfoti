@@ -8,7 +8,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #2C3E50, #000000);
+            background-image: url('adbackground.gif');
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
             color: #fff;
             display: flex;
             justify-content: center;
@@ -39,6 +42,7 @@
         if (sessionStorage.getItem('nextstep') !== 'true') {
             window.location.href = 'calculator.html'; // Redirect to the calculator page
         }
+        alert('EPILEPSY WARNING!!!')
     </script>
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
