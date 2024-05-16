@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const panicUrlInput = document.getElementById('panic-url');
     const saveSettingsButton = document.getElementById('save-settings');
     const openBlankPageButton = document.getElementById('open-blank-page');
+    const backButton = document.getElementById('back-button'); // Assuming you have this element
 
     // Function to save settings to localStorage
     function saveSettings(key, url) {
@@ -54,25 +55,27 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === panicKey) {
             // Perform the panic action (e.g., redirect to the panic URL)
-            window.location.href = panicUrl || 'about:blank';
+            window.location.replace(panicUrl || 'about:blank');
         }
     });
 
     // Open a blank page when the button is clicked
     openBlankPageButton.addEventListener('click', () => {
-        win = window.open();
+        const win = window.open();
         win.document.body.style.margin = '0';
-        win. document.body.style.height = '100%';
-        var iframe = win.document.createElement('iframe');
-        iframe.style.border='none';
-        iframe.style.width = '100%' ;
-        iframe.style.height = '100%' ;
+        win.document.body.style.height = '100%';
+        const iframe = win.document.createElement('iframe');
+        iframe.style.border = 'none';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
         iframe.style.margin = '0';
         iframe.src = 'https://calculatorproject.brt.ar/settings.html';
         win.document.body.appendChild(iframe);
         close();
     });
+
+    // Navigate back to options.html
     backButton.addEventListener('click', () => {
-        window.location.href = 'options.html';
+        window.location.replace('options.html');
     });
 });
