@@ -54,8 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (e) => {
         if (!isSettingKey && e.key === panicKey) {
-
-            window.location.replace(panicUrl || 'about:blank');
+            let containshttps = text.includes("https://");
+            if (containshttps == false){
+                window.location.replace('https://'.concat(panicUrl));
+            }else{
+                window.location.replace(panicUrl);
+            }
         }
     });
 
