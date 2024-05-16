@@ -42,7 +42,9 @@
         if (sessionStorage.getItem('nextstep') !== 'true') {
             window.location.href = 'calculator.html'; // Redirect to the calculator page
         }
-        alert('EPILEPSY WARNING!!!')
+        if (sessionStorage.getItem('levelOfAccess') === 'yesAds'){
+            alert('EPILEPSY WARNING!!!')
+        }
     </script>
     <link rel="icon" href="favicon.png" type="image/png">
 </head>

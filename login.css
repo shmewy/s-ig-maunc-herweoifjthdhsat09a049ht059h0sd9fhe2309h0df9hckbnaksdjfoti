@@ -12,12 +12,12 @@ body {
 
 .login-container {
     background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     text-align: center;
-    width: 300px;
+    width: 250px; /* Adjusted width for smaller login box */
 }
 
 form {
@@ -26,7 +26,7 @@ form {
 }
 
 h2, h4 {
-    margin: 0 0 15px;
+    margin: 0 0 10px; /* Adjusted margin */
 }
 
 label {
@@ -36,8 +36,8 @@ label {
 }
 
 input {
-    margin-bottom: 15px;
-    padding: 10px;
+    margin-bottom: 10px; /* Adjusted margin */
+    padding: 8px; /* Adjusted padding */
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
@@ -55,7 +55,7 @@ button {
     background: #002c5c;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 8px; /* Adjusted padding */
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s ease;
