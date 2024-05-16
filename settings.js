@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let panicKey;
     let panicUrl;
+    let isSettingKey = false;
 
     const panicKeyInput = document.getElementById('panic-key');
     const panicUrlInput = document.getElementById('panic-url');
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set the panic key when the user presses a key in the input field
     panicKeyInput.addEventListener('keydown', (e) => {
+        isSettingKey = true;
         panicKey = e.key;
         panicKeyInput.value = panicKey;
         e.preventDefault();  // Prevent the default action for the key
@@ -35,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (panicKey) {
             saveSettings(panicKey, panicUrl);
             alert('Settings saved!');
+            isSettingKey = false;
         } else {
             alert('Please set a panic key.');
         }
@@ -53,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Listen for the panic key press and perform the panic action
     document.addEventListener('keydown', (e) => {
-        if (e.key === panicKey) {
+        if (!isSettingKey && e.key === panicKey) {
             // Perform the panic action (e.g., redirect to the panic URL)
             window.location.replace(panicUrl || 'about:blank');
         }
@@ -76,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navigate back to options.html
     backButton.addEventListener('click', () => {
+        sessionStorage.setItem('optionspage', 'true');
         window.location.replace('options.html');
     });
 });
