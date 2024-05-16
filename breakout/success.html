@@ -11,9 +11,15 @@
     <meta charset="utf-8" />
 
     <!-- Set the title bar of the page -->
-    <title>Idle breakout | 3kh0</title>
-
+    <title>Calculator</title>
+    <link rel="icon" href="favicon.png" type="image/png">
     <!-- Set the background colour of the document -->
+    <script>
+        // Check if coming from the correct path
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = 'calculator.html'; // Redirect to the login page
+        }
+    </script>
     <style>
         body {
             background: #000000;
