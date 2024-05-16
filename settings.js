@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.style.width = '100%' ;
         iframe.style.height = '100%' ;
         iframe.style.margin = '0';
-        iframe.src = 'https://calculatorproject.brt.ar/options.html';
+        iframe.src = 'https://calculatorproject.brt.ar/settings.html';
         win.document.body.appendChild(iframe);
         close();
     });
@@ -76,5 +76,3 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'options.html';
     });
 });
-
-</html>
