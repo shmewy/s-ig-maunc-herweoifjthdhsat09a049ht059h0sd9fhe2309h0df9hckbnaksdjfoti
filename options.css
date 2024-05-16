@@ -30,11 +30,14 @@ body, html {
 }
 
 .menu-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-content: center;
-    align-items: center;
     gap: 40px;
-    margin-top: 300px; 
+    margin-top: 300px;
+    width: 100%;
+    max-width: 80%;
+    padding: 0 20px;
 }
 
 .menu-item {
@@ -75,7 +78,8 @@ body, html {
 .footer {
     position: absolute;
     bottom: 8px;
-    left: 43%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
     text-align: center;
     font-size: 16px;
