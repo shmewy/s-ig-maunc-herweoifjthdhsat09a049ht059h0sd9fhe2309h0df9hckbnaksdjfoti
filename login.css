@@ -52,7 +52,7 @@ input:focus {
 }
 
 button {
-    background: #007bff;
+    background: #002c5c;
     color: #fff;
     border: none;
     padding: 10px;
@@ -62,5 +62,5 @@ button {
 }
 
 button:hover {
-    background: #0056b3;
+    background: #002042;
 }
