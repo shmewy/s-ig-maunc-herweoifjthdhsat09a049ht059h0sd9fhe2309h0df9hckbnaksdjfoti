@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings Page</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="settings.css">
+    <script> 
+        if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
+            alert('This is Premium access only');
+            window.location.href('calculator.html')
+        }
+    </script>
 </head>
 <body>
     <div class="settings-container">
@@ -13,7 +19,13 @@
             <label for="panic-key">Set Panic Key:</label>
             <input type="text" id="panic-key" placeholder="Press a key">
         </div>
+        <div class="setting-item">
+            <label for="panic-url">Set Panic URL:</label>
+            <input type="url" id="panic-url" placeholder="Enter URL">
+        </div>
         <button id="save-settings">Save Settings</button>
+        <button id="open-blank-page">Open about:blank</button>
+        <button id="back-button">Back</button>
     </div>
 
     <script src="settings.js"></script>

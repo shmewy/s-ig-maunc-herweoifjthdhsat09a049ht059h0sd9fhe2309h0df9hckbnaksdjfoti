@@ -1,24 +1,80 @@
+/* settings.css */
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('blurredbackground.png') no-repeat center center fixed;
+    background-color: #f0f0f0;
+    background-image: url('blurredbackground.png'); /* Update this to your actual background image path */
+    background-size: cover;
+    margin: 0;
 }
 
 .settings-container {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.settings-container h1 {
+    margin-bottom: 20px;
 }
 
 .setting-item {
     margin-bottom: 15px;
 }
 
-#panic-key {
-    padding: 5px;
-    font-size: 16px;
+.setting-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
+
+.setting-item input {
+    padding: 10px;
+    font-size: 16px;
+    width: calc(100% - 22px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#save-settings {
+    background-color: #007bff;
+    color: white;
+}
+
+#save-settings:hover {
+    background-color: #0056b3;
+}
+
+#open-blank-page {
+    background-color: #ff0000;
+    color: white;
+}
+
+#open-blank-page:hover {
+    background-color: #cc0000;
+}
+
+#back-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+#back-button:hover {
+    background-color: #5a6268;
+}
+
