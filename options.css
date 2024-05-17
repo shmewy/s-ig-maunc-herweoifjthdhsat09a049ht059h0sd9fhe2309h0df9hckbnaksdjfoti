@@ -13,7 +13,7 @@ body, html {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     overflow-x: hidden;
     overflow-y: auto;
-    overflow: visible; /* Allow content to overflow */
+    overflow: visible;
 }
 
 .logo-container {
@@ -38,7 +38,7 @@ body, html {
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
-    overflow: visible; /* Allow content to overflow */
+    overflow: visible; 
 }
 
 .menu-container {
@@ -47,14 +47,13 @@ body, html {
     gap: 20px;
     width: 100%;
     max-width: 100%;
-    padding: 50px 10px 0; /* Add extra space at the top */
+    padding: 0 10px;
     box-sizing: border-box;
-    overflow: visible; /* Allow content to overflow */
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #888 #444; /* Firefox */
+    overflow: visible; 
+    scrollbar-width: thin; 
+    scrollbar-color: #888 #444; 
 }
 
-/* Custom scrollbar for WebKit browsers */
 .menu-container::-webkit-scrollbar {
     width: 12px;
 }
@@ -67,7 +66,7 @@ body, html {
 .menu-container::-webkit-scrollbar-thumb {
     background-color: #888; 
     border-radius: 10px;
-    border: 3px solid #444; /* Adjust the thumb size */
+    border: 3px solid #444; 
 }
 
 .menu-item {
@@ -82,7 +81,7 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    overflow: visible; /* Ensure hover state is not cut off */
+    overflow: visible; 
 }
 
 .menu-item:hover {
@@ -94,6 +93,7 @@ body, html {
     font-size: 50px;
     color: #FFFFFF;
     margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .menu-item span {
