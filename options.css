@@ -30,17 +30,25 @@ body, html {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
 }
 
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: visible; /* Allow content to overflow */
+}
+
 .menu-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     width: 100%;
     max-width: 100%;
-    height: 190px;
     padding: 0 10px;
-    margin-top: 300px;
     box-sizing: border-box;
-    overflow-y: auto;
     overflow: visible; /* Allow content to overflow */
     scrollbar-width: thin; /* Firefox */
     scrollbar-color: #888 #444; /* Firefox */
