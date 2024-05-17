@@ -38,7 +38,7 @@ body, html {
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
-    overflow: visible; 
+    overflow: visible;
 }
 
 .menu-container {
@@ -49,9 +49,9 @@ body, html {
     max-width: 100%;
     padding: 0 10px;
     box-sizing: border-box;
-    overflow: visible; 
-    scrollbar-width: thin; 
-    scrollbar-color: #888 #444; 
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #444;
 }
 
 .menu-container::-webkit-scrollbar {
@@ -66,7 +66,7 @@ body, html {
 .menu-container::-webkit-scrollbar-thumb {
     background-color: #888; 
     border-radius: 10px;
-    border: 3px solid #444; 
+    border: 3px solid #444;
 }
 
 .menu-item {
@@ -81,7 +81,7 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    overflow: visible; 
+    overflow: visible;
 }
 
 .menu-item:hover {
