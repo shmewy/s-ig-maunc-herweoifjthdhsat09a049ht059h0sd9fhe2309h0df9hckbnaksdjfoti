@@ -13,6 +13,7 @@ body, html {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     overflow-x: hidden;
     overflow-y: auto;
+    overflow: visible; /* Allow content to overflow */
 }
 
 .logo-container {
@@ -40,6 +41,7 @@ body, html {
     margin-top: 300px;
     box-sizing: border-box;
     overflow-y: auto;
+    overflow: visible; /* Allow content to overflow */
     scrollbar-width: thin; /* Firefox */
     scrollbar-color: #888 #444; /* Firefox */
 }
@@ -72,6 +74,7 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
+    overflow: visible; /* Ensure hover state is not cut off */
 }
 
 .menu-item:hover {
