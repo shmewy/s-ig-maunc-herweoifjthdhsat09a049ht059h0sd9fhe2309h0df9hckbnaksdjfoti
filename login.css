@@ -17,16 +17,20 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     text-align: center;
-    width: 200px; 
+    width: 250px; 
 
 form {
     display: flex;
     flex-direction: column;
 }
 
-h2, h4 {
+h2 {
     margin: 0 0 10px;
     font-size: 1.2em; 
+}
+h4 {
+    margin: 0 0 10px;
+    font-size: 1.0em;
 }
 
 label {

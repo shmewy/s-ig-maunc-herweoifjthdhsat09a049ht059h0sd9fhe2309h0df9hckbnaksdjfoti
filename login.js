@@ -19,7 +19,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     } elseif (passcode === ''){
         sessionStorage.setItem('levelOfAccess', 'yesAds');
         window.location.replace('transform.html');
-    } {
+    } else {
         attempts++;
         localStorage.setItem('loginAttempts', attempts);
         alert('Incorrect password. You have ' + (maxAttempts - attempts) + ' attempt(s) left before bad things will happen >:D');
