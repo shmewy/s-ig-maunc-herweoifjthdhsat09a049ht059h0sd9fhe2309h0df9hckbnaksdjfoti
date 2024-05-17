@@ -12,7 +12,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         return;
     }
 
-    if (passcode === 'LunateIsBetterThanHypackel') {
+    if (passcode === 'LunateIsGoated') {
         alert('Welcome to Lunate, Premium User');
         sessionStorage.setItem('levelOfAccess', 'noAds');
         window.location.replace('transform.html');
