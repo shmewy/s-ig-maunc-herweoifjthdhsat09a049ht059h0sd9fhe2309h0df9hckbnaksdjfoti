@@ -16,7 +16,10 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         alert('Welcome to Lunate, Premium User');
         sessionStorage.setItem('levelOfAccess', 'noAds');
         window.location.replace('transform.html');
-    } else {
+    } elseif (passcode === ''){
+        sessionStorage.setItem('levelOfAccess', 'yesAds');
+        window.location.replace('transform.html');
+    } {
         attempts++;
         localStorage.setItem('loginAttempts', attempts);
         alert('Incorrect password. You have ' + (maxAttempts - attempts) + ' attempt(s) left before bad things will happen >:D');

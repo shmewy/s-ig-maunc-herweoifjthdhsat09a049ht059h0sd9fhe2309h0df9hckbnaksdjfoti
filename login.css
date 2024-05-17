@@ -12,13 +12,12 @@ body {
 
 .login-container {
     background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     text-align: center;
-    width: 250px; 
-}
+    width: 200px; 
 
 form {
     display: flex;
@@ -26,24 +25,27 @@ form {
 }
 
 h2, h4 {
-    margin: 0 0 10px; 
+    margin: 0 0 10px;
+    font-size: 1.2em; 
 }
 
 label {
     margin-bottom: 5px;
     text-align: left;
     color: #ddd;
+    font-size: 0.9em; 
 }
 
 input {
     margin-bottom: 10px;
-    padding: 8px; 
+    padding: 6px; 
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
+    font-size: 0.9em; 
 }
 
 input:focus {
@@ -55,10 +57,11 @@ button {
     background: #002c5c;
     color: #fff;
     border: none;
-    padding: 8px;
+    padding: 6px; 
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s ease;
+    font-size: 0.9em; 
 }
 
 button:hover {
