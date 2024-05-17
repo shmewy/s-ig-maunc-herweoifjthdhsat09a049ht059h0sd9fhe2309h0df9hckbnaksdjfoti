@@ -12,11 +12,11 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         return;
     }
 
-    if (passcode === 'LunateIsGoated') {
+    if (passcode === 'LUN8ISGOAT') {
         alert('Welcome to Lunate, Premium User');
         sessionStorage.setItem('levelOfAccess', 'noAds');
         window.location.replace('transform.html');
-    } elseif (passcode === ''){
+    } else if (passcode === ''){
         sessionStorage.setItem('levelOfAccess', 'yesAds');
         window.location.replace('transform.html');
     } else {
