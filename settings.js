@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     openBlankPageButton.addEventListener('click', () => {
-        close();
         const win = window.open();
         win.document.body.style.margin = '0';
         win.document.body.style.height = '100%';
@@ -61,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.style.margin = '0';
         iframe.src = 'https://calculatorproject.brt.ar/settings.html';
         win.document.body.appendChild(iframe);
+        window.close();
     });
 
     backButton.addEventListener('click', () => {
