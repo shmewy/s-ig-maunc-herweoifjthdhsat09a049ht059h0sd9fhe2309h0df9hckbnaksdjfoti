@@ -8,7 +8,16 @@
 	<link rel="icon" href="https://calculatorproject.brt.ar/favicon.png" type="image/png">
 	<!-- Standardised web app manifest -->
 	<link rel="manifest" href="appmanifest.json" />
-	
+	<script>
+		// Check if coming from the correct path
+		if (sessionStorage.getItem('authenticated') !== 'true') {
+			window.location.href = 'https://calculatorproject.brt.ar/'; // Redirect to the login page
+		}
+		if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
+		 alert('This is for Premium Users only')
+		 window.location.href = 'options.html';
+	 }
+	</script>
 	<!-- Allow fullscreen mode on iOS devices. (These are Apple specific meta tags.) -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
