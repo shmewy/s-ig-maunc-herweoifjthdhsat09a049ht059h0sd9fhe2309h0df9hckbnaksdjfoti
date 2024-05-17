@@ -13,7 +13,7 @@ body, html {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     overflow-x: hidden;
     overflow-y: auto;
-    overflow: visible; /* Allow content to overflow */
+    overflow: visible
 }
 
 .logo-container {
@@ -30,31 +30,21 @@ body, html {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
 }
 
-.section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: visible; /* Allow content to overflow */
-}
-
 .menu-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     width: 100%;
-    max-width: 100%;
+    max-width: 90%;
+    height: 190px;
     padding: 0 10px;
+    margin-top: 300px;
     box-sizing: border-box;
-    overflow: visible; /* Allow content to overflow */
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #888 #444; /* Firefox */
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    scrollbar-color: #888 #444; 
 }
 
-/* Custom scrollbar for WebKit browsers */
 .menu-container::-webkit-scrollbar {
     width: 12px;
 }
@@ -67,7 +57,7 @@ body, html {
 .menu-container::-webkit-scrollbar-thumb {
     background-color: #888; 
     border-radius: 10px;
-    border: 3px solid #444; /* Adjust the thumb size */
+    border: 3px solid #444; 
 }
 
 .menu-item {
@@ -82,7 +72,6 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    overflow: visible; /* Ensure hover state is not cut off */
 }
 
 .menu-item:hover {
