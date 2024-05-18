@@ -80,6 +80,7 @@ button:hover {
 
 .password-container input {
     width: calc(100% - 30px);
+    padding-right: 30px;
 }
 
 .password-container img {
