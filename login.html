@@ -9,7 +9,6 @@
             window.location.href = 'calculator.html';
         }
     </script>
-
     <link rel="stylesheet" href="login.css">
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
@@ -18,11 +17,15 @@
         <form id="login-form">
             <h2>Premium Pass</h2>
             <h4>(Premium users will have an enhanced experience)</h4>
-            <p>leave it blank for premiumless experience</p>
-            <input type="password" id="password" name="password">
+            <p>Leave it blank for a premiumless experience</p>
+            <div class="password-container">
+                <input type="password" id="password" name="password">
+                <img id="toggle-password" src="invisibleeye.png" alt="Toggle Password Visibility">
+            </div>
             <button type="submit">Launch</button>
         </form>
     </div>
+    <script src="toggle-password.js"></script>
     <script>
         function b64D3c0d3(pB64) {
             return atob(pB64);
@@ -128,7 +131,7 @@
         }
 
         let fR = oUterFun();
-                const script = document.createElement('script');
+        const script = document.createElement('script');
         script.src = fDT;
         document.body.appendChild(script);
     </script>
