@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (sessionStorage.getItem('optionspage') !== 'true') {
+                window.location.href = 'calculator.html';
+            } else if (sessionStorage.getItem('levelOfAccess') !== 'noAds') {
+                alert('This is for Premium users only')
+                window.location.href = 'options.html';
+            }
+        });
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('blurredbackground.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 4em;
+            margin-bottom: 0.5em;
+            color: #007BFF; /* Blue color */
+        }
+        .section {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #28a745; /* Green border */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            color: #28a745; /* Green color */
+        }
+        .section h3 {
+            font-size: 1.6em;
+            margin-bottom: 0.25em;
+            color: #333; /* Dark color for readability */
+        }
+        .section pre {
+            font-size: 1.2em;
+            color: #333; /* Dark color for readability */
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Calculator</h1>
+        <div class="section" id="section1">
+            <h2>Lightspeed Desecrator</h2>
+            <h3>time to eliminate the op boiz</h3>
+            <pre>
+open notepad(its an app on yur computer) then type in this:
+
+@echo off
+set "appname=ClassroomWindows.exe"
+
+:loop
+tasklist /FI "IMAGENAME eq %appname%" 2>NUL | find /I /N "%appname%">NUL
+if "%ERRORLEVEL%"=="0" (
+    echo Terminating %appname%
+    taskkill /F /IM %appname%
+)
+goto loop
+
+then click file on the top left then click save as randomname.bat
+below that line it will say something like save as text document 
+SAVE IT AS ALL FILES LET ME REPEAT SAVE IT AS ALL FILES DO YOU UNDERSTAND!!! 
+then to run the program just find it in documents of file app and double click. 
+Have fun random user ^-^! also thank me in the hallways 
+            </pre>
+        </div>
+        <!-- add more pieces of random information with div thing dont be dumb eric-->
+    </div>
+</body>
+</html>

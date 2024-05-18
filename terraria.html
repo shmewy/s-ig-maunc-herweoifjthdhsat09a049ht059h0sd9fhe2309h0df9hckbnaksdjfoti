@@ -24,6 +24,7 @@
             if (sessionStorage.getItem('optionspage') !== 'true') {
                 window.location.href = 'calculator.html';
             } else if (sessionStorage.getItem('levelOfAccess') !== 'noAds') {
+                alert('This is for Premium users only')
                 window.location.href = 'options.html';
             }
         });
