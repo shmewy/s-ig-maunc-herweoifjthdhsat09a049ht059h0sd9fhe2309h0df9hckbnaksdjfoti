@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (sessionStorage.getItem('optionspage') !== 'true') {
+                window.location.href = 'calculator.html';
+            } else if (sessionStorage.getItem('levelOfAccess') !== 'noAds') {
+                window.location.href = 'options.html';
+            }
+        });
+    </script>
+</head>
+<body>
+    <iframe src="https://complexcalculations.brt.ar" sandbox="allow-scripts allow-same-origin"></iframe>
+</body>
+</html>
