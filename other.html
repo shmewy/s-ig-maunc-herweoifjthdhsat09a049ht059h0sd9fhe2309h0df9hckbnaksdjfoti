@@ -39,7 +39,6 @@
             background-size: cover;
             color: white;
             animation: fadeIn 2s ease-in-out;
-            overflow:hidden
         }
         .container {
             display: flex;
@@ -81,6 +80,21 @@
         .section pre {
             font-size: 1.2em;
             color: white;
+        }
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #36d3c1, #122b4d);
+            border-radius: 10px;
+            border: 3px solid rgba(0, 0, 0, 0.7);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #74f8da, #173763);
         }
     </style>
 </head>
