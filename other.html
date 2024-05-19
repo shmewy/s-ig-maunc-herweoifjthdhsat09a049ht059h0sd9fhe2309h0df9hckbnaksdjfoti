@@ -10,12 +10,25 @@
             if (sessionStorage.getItem('optionspage') !== 'true') {
                 window.location.href = 'calculator.html';
             } else if (sessionStorage.getItem('levelOfAccess') !== 'noAds') {
-                alert('This is for Premium users only')
+                alert('This is for Premium users only');
                 window.location.href = 'options.html';
             }
         });
     </script>
     <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff; }
+            100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff; }
+        }
         body {
             margin: 0;
             padding: 0;
@@ -23,6 +36,7 @@
             background: url('blurredbackground.png') no-repeat center center fixed;
             background-size: cover;
             color: white;
+            animation: fadeIn 2s ease-in-out;
         }
         .container {
             display: flex;
@@ -35,9 +49,10 @@
             z-index: 1;
         }
         h1 {
-            font-size: 4em;
-            margin-bottom: 0.5em;
+            font-size: 3em;
+            margin: 1em 0;
             color: white; 
+            animation: bounce 2s infinite;
         }
         .section {
             border-radius: 10px;
@@ -47,10 +62,13 @@
             width: 90%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 2s ease-in-out;
         }
         .section h2 {
             font-size: 2em;
             margin-bottom: 0.5em;
+            color: white;
+            animation: glow 1.5s ease-in-out infinite alternate;
         }
         .section h3 {
             font-size: 1.6em;
@@ -65,7 +83,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Random arse things that ppl want me to add</h1>
+        <h1>Welcome to the Lunate Lair</h1>
         <div class="section" id="section1">
             <h2>Lightspeed Desecrator</h2>
             <h3>time to eliminate the op boiz</h3>
