@@ -21,10 +21,11 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes shake {
-            0%, 100% { transform: translate(0, 0) rotate(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translate(-2px, 0) rotate(-1deg); }
-            20%, 40%, 60%, 80% { transform: translate(2px, 0) rotate(1deg); }
+        @keyframes ominous {
+            0%, 100% { transform: translate(0, 0) scale(1); color: white; text-shadow: 0 0 10px #000; }
+            25% { transform: translate(-10px, -10px) scale(1.1); color: #ff0000; text-shadow: 0 0 20px #ff0000; }
+            50% { transform: translate(10px, 10px) scale(1.05); color: #00ff00; text-shadow: 0 0 20px #00ff00; }
+            75% { transform: translate(-10px, 10px) scale(1.1); color: #0000ff; text-shadow: 0 0 20px #0000ff; }
         }
         @keyframes pulseBlack {
             0% { color: white; }
@@ -59,7 +60,7 @@
             font-size: 3em;
             margin: 0.8em 0;
             color: white; 
-            animation: shake 0.5s infinite, pulseBlack 3s infinite;
+            animation: ominous 5s infinite, pulseBlack 3s infinite;
         }
         .section {
             border-radius: 10px;
