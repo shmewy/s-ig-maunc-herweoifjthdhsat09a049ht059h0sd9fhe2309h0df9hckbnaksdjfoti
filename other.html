@@ -27,11 +27,6 @@
             50% { transform: translate(10px, 10px) scale(1.05); color: #00ff00; text-shadow: 0 0 20px #00ff00; }
             75% { transform: translate(-10px, 10px) scale(1.1); color: #0000ff; text-shadow: 0 0 20px #0000ff; }
         }
-        @keyframes pulseBlack {
-            0% { color: white; }
-            50% { color: black; }
-            100% { color: white; }
-        }
         @keyframes glow {
             0% { text-shadow: 0 0 5px black, 0 0 10px black, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000, 0 0 30px #ff0000, 0 0 35px #ff0000; }
             100% { text-shadow: 0 0 10px black, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000, 0 0 60px #ff0000, 0 0 70px #ff0000; }
@@ -60,7 +55,7 @@
             font-size: 3em;
             margin: 0.8em 0;
             color: white; 
-            animation: ominous 5s infinite, pulseBlack 3s infinite;
+            animation: ominous 5s infinite
         }
         .section {
             border-radius: 10px;
