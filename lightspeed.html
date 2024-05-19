@@ -17,21 +17,7 @@
         });
     </script>
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes ominous {
-            0%, 100% { transform: translate(0, 0) scale(1); color: white; text-shadow: 0 0 10px #000; }
-            25% { transform: translate(-10px, -10px) scale(1.1); color: #36d3c1; text-shadow: 0 0 20px #36d3c1; }
-            50% { transform: translate(10px, 10px) scale(1.05); color: #74f8da; text-shadow: 0 0 20px #74f8da; }
-            75% { transform: translate(-10px, 10px) scale(1.1); color: #b2f9e1; text-shadow: 0 0 20px #b2f9e1; }
-        }
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px black, 0 0 10px black, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000, 0 0 30px #ff0000, 0 0 35px #ff0000; }
-            100% { text-shadow: 0 0 10px black, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000, 0 0 60px #ff0000, 0 0 70px #ff0000; }
-        }
-        body {
+            body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -53,8 +39,7 @@
         h1 {
             font-size: 3em;
             margin: 0.8em 0;
-            color: white; 
-            animation: ominous 5s infinite;
+            color: white;
         }
         .section {
             border-radius: 10px;
@@ -63,14 +48,12 @@
             max-width: 800px;
             width: 90%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: rgba(0, 0, 0, 0.7);
-            animation: fadeIn 2s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.7)
         }
         .section h2 {
             font-size: 2.5em;
             margin-bottom: 0.5em;
             color: black;
-            animation: glow 1.5s ease-in-out infinite alternate;
         }
         .section h3 {
             font-size: 1.6em;
@@ -110,18 +93,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Lunate Lair</h1>
-        <div class="section" id="section1">
+            <div class="section" id="section1">
             <h2>Lightspeed Desecrator</h2>
-            <h3>Time to eliminate the op boiz.</h3>
+            <h3>Keep this open</h3>
             <pre>
-download lightspeed.bat then open it. 
-Then you will need to go to calculatorproject.brt.ar/lightspeed/ 
-and keep it open if you want lightspeed to be disabled
-REMEMBER: YOU HAVE TO OPEN THE BATCH FILE FIRST
-THEN YOU HAVE TO OPEN THE LINK FOR IT TO WORK.
+You will need to download the batch file
+from Premium Info first and then run it.
+You must keep this open for it to work.
+Just keep it open in the background.
             </pre>
-            <a href="lightspeed.bat" download>download lightspeed.bat</a>
         </div>
     </div>
 </body>
