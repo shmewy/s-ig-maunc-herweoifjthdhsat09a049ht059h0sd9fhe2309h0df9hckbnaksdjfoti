@@ -85,8 +85,8 @@ button:hover {
 
 .password-container img {
     position: absolute;
-    right: 8px;
-    top: 45%;
+    right: 6px;
+    top: 43%;
     transform: translateY(-50%);
     cursor: pointer;
     width: 20px;
