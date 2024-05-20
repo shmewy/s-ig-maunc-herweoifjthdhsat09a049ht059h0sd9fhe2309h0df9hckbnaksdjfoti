@@ -88,14 +88,29 @@ const sendMessage = () => {
             resource: {
                 values: [[messageData.username, messageData.message, messageData.timestamp]]
             }
-        }).then(() => {
-            console.log("Message sent.");
-            loadMessages(); // Reload messages to include the new one
+        }).then((response) => {
+            console.log("Message sent: ", response);
+            appendMessageToChat(messageData);
             messageInput.value = '';
         }, (error) => {
             console.error('Error: ' + error.result.error.message);
         });
     }
+};
+
+// Function to append a message to the chat
+const appendMessageToChat = (messageData) => {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.innerHTML = `
+        <div class="message-header">
+            <span class="message-username">${messageData.username}</span>
+            <span class="message-timestamp">${formatTime(messageData.timestamp)}</span>
+        </div>
+        <div class="message-body">${messageData.message}</div>
+    `;
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
 };
 
 sendButton.addEventListener('click', sendMessage);
@@ -120,21 +135,15 @@ const loadMessages = () => {
     }).then((response) => {
         const range = response.result;
         if (range.values.length > 0) {
-            messagesContainer.innerHTML = ''; // Clear existing messages
             for (let i = 0; i < range.values.length; i++) {
                 const row = range.values[i];
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message');
-                messageElement.innerHTML = `
-                    <div class="message-header">
-                        <span class="message-username">${row[0]}</span>
-                        <span class="message-timestamp">${formatTime(row[2])}</span>
-                    </div>
-                    <div class="message-body">${row[1]}</div>
-                `;
-                messagesContainer.appendChild(messageElement);
+                const messageData = {
+                    username: row[0],
+                    message: row[1],
+                    timestamp: row[2]
+                };
+                appendMessageToChat(messageData);
             }
-            messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
         }
     }, (error) => {
         console.error('Error: ' + error.result.error.message);
