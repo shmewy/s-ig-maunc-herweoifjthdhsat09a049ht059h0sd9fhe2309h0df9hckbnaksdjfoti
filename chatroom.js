@@ -1,7 +1,7 @@
 const CLIENT_ID = '508916788-98qbkadvhstn1nhqoeob263lvqqikauu.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyDH11S83pyRVD8dyL-8eYIxmfzOFMoGOec';
 const SPREADSHEET_ID = '17kX3E5k2Hw5ofnR_aiBnHfGtYkzoAWt0I6JdKF2FeeI';
-const SHEET_NAME = 'Sheet1';
+const SHEET_NAME = 'Lunate chat';
 
 // Load the API client and auth2 library
 function handleClientLoad() {
