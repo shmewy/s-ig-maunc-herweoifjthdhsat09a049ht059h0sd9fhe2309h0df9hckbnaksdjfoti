@@ -1,156 +1,88 @@
-const CLIENT_ID = '508916788-98qbkadvhstn1nhqoeob263lvqqikauu.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyDH11S83pyRVD8dyL-8eYIxmfzOFMoGOec';
-const SPREADSHEET_ID = '17kX3E5k2Hw5ofnR_aiBnHfGtYkzoAWt0I6JdKF2FeeI';
-const SHEET_NAME = 'Sheet1';
+// chatroom.js
 
-// Load the API client and auth2 library
-function handleClientLoad() {
-    console.log("Loading client...");
-    gapi.load('client:auth2', initClient);
-}
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-function initClient() {
-    console.log("Initializing client...");
-    gapi.client.init({
-        apiKey: API_KEY,
-        clientId: CLIENT_ID,
-        discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-        scope: "https://www.googleapis.com/auth/spreadsheets"
-    }).then(function () {
-        console.log("Client initialized.");
-        // Listen for sign-in state changes.
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-        // Handle the initial sign-in state.
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    }, function (error) {
-        console.error("Error initializing client: ", JSON.stringify(error, null, 2));
-    });
-}
-
-function updateSigninStatus(isSignedIn) {
-    if (isSignedIn) {
-        console.log("User is signed in.");
-        loadMessages();
-    } else {
-        console.log("User is not signed in.");
-        gapi.auth2.getAuthInstance().signIn();
-    }
-}
-
-// Elements
-const messagesContainer = document.getElementById('chat-messages');
-const messageInput = document.getElementById('message-input');
-const sendButton = document.getElementById('send-button');
-const usernameInput = document.getElementById('username-input');
-const setUsernameButton = document.getElementById('set-username-button');
-const usernameModal = document.getElementById('username-modal');
-let username = localStorage.getItem('username') || '';
-
-// Set username
-const setUsername = () => {
-    username = usernameInput.value.trim();
-    if (username) {
-        localStorage.setItem('username', username);
-        usernameModal.style.display = 'none';
-        loadMessages(); // Load messages after username is set
-    }
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDHsUas6rwytqvUEDtholHDw8ZT86L6vvQ",
+    authDomain: "lunatechat.firebaseapp.com",
+    projectId: "lunatechat",
+    storageBucket: "lunatechat.appspot.com",
+    messagingSenderId: "1030719962982",
+    appId: "1:1030719962982:web:51b2ad71627bba77ba52a7",
+    measurementId: "G-MFWL44P22J"
 };
 
-if (username) {
-    usernameModal.style.display = 'none';
-    loadMessages(); // Load messages if username is already set
-}
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-setUsernameButton.addEventListener('click', setUsername);
-usernameInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        setUsername();
+// Get elements
+const usernameModal = document.getElementById('username-modal');
+const usernameInput = document.getElementById('username-input');
+const setUsernameButton = document.getElementById('set-username-button');
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+const chatMessages = document.getElementById('chat-messages');
+
+let username = '';
+
+// Set username
+setUsernameButton.addEventListener('click', () => {
+    username = usernameInput.value.trim();
+    if (username) {
+        usernameModal.style.display = 'none';
     }
 });
 
 // Send message
-const sendMessage = () => {
-    const message = messageInput.value;
-    if (message.trim() !== '' && username) {
-        const messageData = {
-            username: username,
-            message: message,
-            timestamp: new Date().toISOString()
-        };
-
-        console.log("Sending message: ", messageData);
-
-        gapi.client.sheets.spreadsheets.values.append({
-            spreadsheetId: SPREADSHEET_ID,
-            range: `${SHEET_NAME}!A:C`,
-            valueInputOption: 'RAW',
-            resource: {
-                values: [[messageData.username, messageData.message, messageData.timestamp]]
-            }
-        }).then((response) => {
-            console.log("Message sent: ", response);
-            appendMessageToChat(messageData);
-            messageInput.value = '';
-        }, (error) => {
-            console.error('Error: ' + error.result.error.message);
+sendButton.addEventListener('click', () => {
+    const message = messageInput.value.trim();
+    if (message && username) {
+        const messagesRef = ref(database, 'messages');
+        push(messagesRef, {
+            username,
+            message,
+            timestamp: Date.now()
         });
-    } else {
-        console.log("Message is empty or username is not set.");
-    }
-};
-
-// Function to append a message to the chat
-const appendMessageToChat = (messageData) => {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message');
-    messageElement.innerHTML = `
-        <div class="message-header">
-            <span class="message-username">${messageData.username}</span>
-            <span class="message-timestamp">${formatTime(messageData.timestamp)}</span>
-        </div>
-        <div class="message-body">${messageData.message}</div>
-    `;
-    messagesContainer.appendChild(messageElement);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
-};
-
-sendButton.addEventListener('click', sendMessage);
-messageInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        sendMessage();
+        messageInput.value = '';
     }
 });
 
-// Format timestamp
-const formatTime = (timestamp) => {
-    const date = new Date(timestamp);
-    return date.toLocaleTimeString();
-};
+// Display messages
+const messagesRef = ref(database, 'messages');
+onChildAdded(messagesRef, (data) => {
+    const messageData = data.val();
+    displayMessage(messageData.username, messageData.message, messageData.timestamp);
+});
 
-// Load existing messages and listen for new messages
-const loadMessages = () => {
-    console.log("Loading messages...");
-    gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEET_NAME}!A:C`
-    }).then((response) => {
-        const range = response.result;
-        if (range.values && range.values.length > 0) {
-            for (let i = 0; i < range.values.length; i++) {
-                const row = range.values[i];
-                const messageData = {
-                    username: row[0],
-                    message: row[1],
-                    timestamp: row[2]
-                };
-                appendMessageToChat(messageData);
-            }
-        }
-    }, (error) => {
-        console.error('Error: ' + error.result.error.message);
-    });
-};
-
-// Load the API client and auth2 library when the script loads
-handleClientLoad();
+function displayMessage(username, message, timestamp) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    
+    const messageHeader = document.createElement('div');
+    messageHeader.classList.add('message-header');
+    
+    const messageUsername = document.createElement('span');
+    messageUsername.classList.add('message-username');
+    messageUsername.textContent = username;
+    
+    const messageTimestamp = document.createElement('span');
+    messageTimestamp.classList.add('message-timestamp');
+    messageTimestamp.textContent = new Date(timestamp).toLocaleTimeString();
+    
+    messageHeader.appendChild(messageUsername);
+    messageHeader.appendChild(messageTimestamp);
+    
+    const messageBody = document.createElement('div');
+    messageBody.classList.add('message-body');
+    messageBody.textContent = message;
+    
+    messageElement.appendChild(messageHeader);
+    messageElement.appendChild(messageBody);
+    
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
