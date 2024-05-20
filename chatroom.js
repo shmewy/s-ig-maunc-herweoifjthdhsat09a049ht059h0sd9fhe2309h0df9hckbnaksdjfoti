@@ -5,30 +5,35 @@ const SHEET_NAME = 'Sheet1';
 
 // Load the API client and auth2 library
 function handleClientLoad() {
+    console.log("Loading client...");
     gapi.load('client:auth2', initClient);
 }
 
 function initClient() {
+    console.log("Initializing client...");
     gapi.client.init({
         apiKey: API_KEY,
         clientId: CLIENT_ID,
         discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
         scope: "https://www.googleapis.com/auth/spreadsheets"
     }).then(function () {
+        console.log("Client initialized.");
         // Listen for sign-in state changes.
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
         // Handle the initial sign-in state.
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     }, function (error) {
-        console.error(JSON.stringify(error, null, 2));
+        console.error("Error initializing client: ", JSON.stringify(error, null, 2));
     });
 }
 
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
+        console.log("User is signed in.");
         loadMessages();
     } else {
+        console.log("User is not signed in.");
         gapi.auth2.getAuthInstance().signIn();
     }
 }
@@ -74,6 +79,8 @@ const sendMessage = () => {
             timestamp: new Date().toISOString()
         };
 
+        console.log("Sending message: ", messageData);
+
         gapi.client.sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
             range: `${SHEET_NAME}!A:C`,
@@ -82,6 +89,7 @@ const sendMessage = () => {
                 values: [[messageData.username, messageData.message, messageData.timestamp]]
             }
         }).then(() => {
+            console.log("Message sent.");
             loadMessages(); // Reload messages to include the new one
             messageInput.value = '';
         }, (error) => {
@@ -105,6 +113,7 @@ const formatTime = (timestamp) => {
 
 // Load existing messages and listen for new messages
 const loadMessages = () => {
+    console.log("Loading messages...");
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: SPREADSHEET_ID,
         range: `${SHEET_NAME}!A:C`
