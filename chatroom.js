@@ -1,7 +1,7 @@
 const CLIENT_ID = '508916788-98qbkadvhstn1nhqoeob263lvqqikauu.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyDH11S83pyRVD8dyL-8eYIxmfzOFMoGOec';
 const SPREADSHEET_ID = '17kX3E5k2Hw5ofnR_aiBnHfGtYkzoAWt0I6JdKF2FeeI';
-const SHEET_NAME = 'Lunate chat';
+const SHEET_NAME = 'Sheet1';  // Updated to match the name in your screenshot
 
 // Load the API client and auth2 library
 function handleClientLoad() {
@@ -48,11 +48,13 @@ const setUsername = () => {
     if (username) {
         localStorage.setItem('username', username);
         usernameModal.style.display = 'none';
+        loadMessages(); // Load messages after username is set
     }
 };
 
 if (username) {
     usernameModal.style.display = 'none';
+    loadMessages(); // Load messages if username is already set
 }
 
 setUsernameButton.addEventListener('click', setUsername);
@@ -80,7 +82,7 @@ const sendMessage = () => {
                 values: [[messageData.username, messageData.message, messageData.timestamp]]
             }
         }).then(() => {
-            loadMessages();
+            loadMessages(); // Reload messages to include the new one
             messageInput.value = '';
         }, (error) => {
             console.error('Error: ' + error.result.error.message);
