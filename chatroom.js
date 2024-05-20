@@ -95,6 +95,8 @@ const sendMessage = () => {
         }, (error) => {
             console.error('Error: ' + error.result.error.message);
         });
+    } else {
+        console.log("Message is empty or username is not set.");
     }
 };
 
@@ -134,7 +136,7 @@ const loadMessages = () => {
         range: `${SHEET_NAME}!A:C`
     }).then((response) => {
         const range = response.result;
-        if (range.values.length > 0) {
+        if (range.values && range.values.length > 0) {
             for (let i = 0; i < range.values.length; i++) {
                 const row = range.values[i];
                 const messageData = {
