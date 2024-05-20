@@ -3,28 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="chatroom.css">
-    <script>
-        // Check if coming from the correct path
-        if (sessionStorage.getItem('authenticated') !== 'true') {
-            window.location.href = 'https://calculatorproject.brt.ar/'; // Redirect to the login page
-        }
-        if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
-         alert('This is for Premium Users only')
-         window.location.href = 'options.html';
-     }
-    </script>
+    <title>Cloud Chat Room</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="username-modal" class="modal">
+        <div class="modal-content">
+            <h2>Enter Your Username</h2>
+            <input type="text" id="username-input" placeholder="Username">
+            <button id="set-username-button">Set Username</button>
+        </div>
+    </div>
     <div class="chat-container">
         <div class="chat-header">
             <h1>Cloud Chat Room</h1>
-            <div class="username-container">
-                <input type="text" id="username-input" placeholder="Enter your username">
-                <button id="set-username-button">Set Username</button>
-            </div>
         </div>
         <div class="chat-messages" id="chat-messages"></div>
         <div class="chat-input">
@@ -60,19 +52,28 @@
         const sendButton = document.getElementById('send-button');
         const usernameInput = document.getElementById('username-input');
         const setUsernameButton = document.getElementById('set-username-button');
+        const usernameModal = document.getElementById('username-modal');
         let username = '';
 
         // Set username
-        setUsernameButton.addEventListener('click', () => {
+        const setUsername = () => {
             username = usernameInput.value.trim();
             if (username) {
+                usernameModal.style.display = 'none';
                 usernameInput.disabled = true;
                 setUsernameButton.disabled = true;
+            }
+        };
+
+        setUsernameButton.addEventListener('click', setUsername);
+        usernameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                setUsername();
             }
         });
 
         // Send message
-        sendButton.addEventListener('click', () => {
+        const sendMessage = () => {
             const message = messageInput.value;
             if (message.trim() !== '' && username) {
                 const messagesRef = ref(db, 'messages');
@@ -83,6 +84,13 @@
                     timestamp: Date.now()
                 });
                 messageInput.value = '';
+            }
+        };
+
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
             }
         });
 
