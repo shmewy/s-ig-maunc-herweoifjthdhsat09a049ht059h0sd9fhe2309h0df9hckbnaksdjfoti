@@ -17,14 +17,14 @@ body, html {
 
 .logo-container {
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
 
 .logo {
-    width: 550px;
+    width: 100px;
     height: auto;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
 }
@@ -61,7 +61,7 @@ body, html {
 }
 
 .menu-item {
-    width: 300px;
+    width: 450px;
     height: 900px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 15px;
