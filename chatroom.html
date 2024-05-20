@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="chatroom.css">
+    <script>
+        // Check if coming from the correct path
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = 'https://calculatorproject.brt.ar/'; // Redirect to the login page
+        }
+        if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
+         alert('This is for Premium Users only')
+         window.location.href = 'options.html';
+     }
+    </script>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Cloud Chat Room</h1>
+            <div class="username-container">
+                <input type="text" id="username-input" placeholder="Enter your username">
+                <button id="set-username-button">Set Username</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+        import { getDatabase, ref, push, set, onChildAdded } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDHsUas6rwytqvUEDtholHDw8ZT86L6vvQ",
+            authDomain: "lunatechat.firebaseapp.com",
+            projectId: "lunatechat",
+            storageBucket: "lunatechat.appspot.com",
+            messagingSenderId: "1030719962982",
+            appId: "1:1030719962982:web:51b2ad71627bba77ba52a7",
+            measurementId: "G-MFWL44P22J"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getDatabase(app);
+
+        // Elements
+        const messagesContainer = document.getElementById('chat-messages');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+        const usernameInput = document.getElementById('username-input');
+        const setUsernameButton = document.getElementById('set-username-button');
+        let username = '';
+
+        // Set username
+        setUsernameButton.addEventListener('click', () => {
+            username = usernameInput.value.trim();
+            if (username) {
+                usernameInput.disabled = true;
+                setUsernameButton.disabled = true;
+            }
+        });
+
+        // Send message
+        sendButton.addEventListener('click', () => {
+            const message = messageInput.value;
+            if (message.trim() !== '' && username) {
+                const messagesRef = ref(db, 'messages');
+                const newMessageRef = push(messagesRef);
+                set(newMessageRef, {
+                    username: username,
+                    message: message,
+                    timestamp: Date.now()
+                });
+                messageInput.value = '';
+            }
+        });
+
+        // Format timestamp
+        const formatTime = (timestamp) => {
+            const date = new Date(timestamp);
+            return date.toLocaleTimeString();
+        };
+
+        // Listen for new messages
+        const messagesRef = ref(db, 'messages');
+        onChildAdded(messagesRef, (snapshot) => {
+            const data = snapshot.val();
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = `
+                <div class="message-header">
+                    <span class="message-username">${data.username}</span>
+                    <span class="message-timestamp">${formatTime(data.timestamp)}</span>
+                </div>
+                <div class="message-body">${data.message}</div>
+            `;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        });
+    </script>
+</body>
+</html>
