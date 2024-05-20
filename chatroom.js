@@ -1,22 +1,37 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
-import { getDatabase, ref, push, set, onChildAdded, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const CLIENT_ID = '508916788-98qbkadvhstn1nhqoeob263lvqqikauu.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyDH11S83pyRVD8dyL-8eYIxmfzOFMoGOec';
+const SPREADSHEET_ID = '17kX3E5k2Hw5ofnR_aiBnHfGtYkzoAWt0I6JdKF2FeeI';
+const SHEET_NAME = 'Sheet1';
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyDHsUas6rwytqvUEDtholHDw8ZT86L6vvQ",
-    authDomain: "lunatechat.firebaseapp.com",
-    projectId: "lunatechat",
-    storageBucket: "lunatechat.appspot.com",
-    messagingSenderId: "1030719962982",
-    appId: "1:1030719962982:web:51b2ad71627bba77ba52a7",
-    measurementId: "G-MFWL44P22J"
-};
+// Load the API client and auth2 library
+function handleClientLoad() {
+    gapi.load('client:auth2', initClient);
+}
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getDatabase(app);
+function initClient() {
+    gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+        scope: "https://www.googleapis.com/auth/spreadsheets"
+    }).then(function () {
+        // Listen for sign-in state changes.
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+        // Handle the initial sign-in state.
+        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+    }, function (error) {
+        console.error(JSON.stringify(error, null, 2));
+    });
+}
+
+function updateSigninStatus(isSignedIn) {
+    if (isSignedIn) {
+        loadMessages();
+    } else {
+        gapi.auth2.getAuthInstance().signIn();
+    }
+}
 
 // Elements
 const messagesContainer = document.getElementById('chat-messages');
@@ -51,14 +66,25 @@ usernameInput.addEventListener('keypress', (e) => {
 const sendMessage = () => {
     const message = messageInput.value;
     if (message.trim() !== '' && username) {
-        const messagesRef = ref(db, 'messages');
-        const newMessageRef = push(messagesRef);
-        set(newMessageRef, {
+        const messageData = {
             username: username,
             message: message,
-            timestamp: Date.now()
+            timestamp: new Date().toISOString()
+        };
+
+        gapi.client.sheets.spreadsheets.values.append({
+            spreadsheetId: SPREADSHEET_ID,
+            range: `${SHEET_NAME}!A:C`,
+            valueInputOption: 'RAW',
+            resource: {
+                values: [[messageData.username, messageData.message, messageData.timestamp]]
+            }
+        }).then(() => {
+            loadMessages();
+            messageInput.value = '';
+        }, (error) => {
+            console.error('Error: ' + error.result.error.message);
         });
-        messageInput.value = '';
     }
 };
 
@@ -77,40 +103,32 @@ const formatTime = (timestamp) => {
 
 // Load existing messages and listen for new messages
 const loadMessages = () => {
-    const messagesRef = ref(db, 'messages');
-    onValue(messagesRef, (snapshot) => {
-        messagesContainer.innerHTML = ''; // Clear existing messages
-        snapshot.forEach((childSnapshot) => {
-            const data = childSnapshot.val();
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
-            messageElement.innerHTML = `
-                <div class="message-header">
-                    <span class="message-username">${data.username}</span>
-                    <span class="message-timestamp">${formatTime(data.timestamp)}</span>
-                </div>
-                <div class="message-body">${data.message}</div>
-            `;
-            messagesContainer.appendChild(messageElement);
-        });
-        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
-    });
-
-    // Listen for new messages
-    onChildAdded(messagesRef, (snapshot) => {
-        const data = snapshot.val();
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message');
-        messageElement.innerHTML = `
-            <div class="message-header">
-                <span class="message-username">${data.username}</span>
-                <span class="message-timestamp">${formatTime(data.timestamp)}</span>
-            </div>
-            <div class="message-body">${data.message}</div>
-        `;
-        messagesContainer.appendChild(messageElement);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `${SHEET_NAME}!A:C`
+    }).then((response) => {
+        const range = response.result;
+        if (range.values.length > 0) {
+            messagesContainer.innerHTML = ''; // Clear existing messages
+            for (let i = 0; i < range.values.length; i++) {
+                const row = range.values[i];
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.innerHTML = `
+                    <div class="message-header">
+                        <span class="message-username">${row[0]}</span>
+                        <span class="message-timestamp">${formatTime(row[2])}</span>
+                    </div>
+                    <div class="message-body">${row[1]}</div>
+                `;
+                messagesContainer.appendChild(messageElement);
+            }
+            messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
+        }
+    }, (error) => {
+        console.error('Error: ' + error.result.error.message);
     });
 };
 
-loadMessages();
+// Load the API client and auth2 library when the script loads
+handleClientLoad();
