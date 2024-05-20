@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Chat Room</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="chatroom.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
     <div id="username-modal" class="modal">
@@ -53,17 +54,22 @@
         const usernameInput = document.getElementById('username-input');
         const setUsernameButton = document.getElementById('set-username-button');
         const usernameModal = document.getElementById('username-modal');
-        let username = '';
+        let username = localStorage.getItem('username') || '';
 
         // Set username
         const setUsername = () => {
             username = usernameInput.value.trim();
             if (username) {
+                localStorage.setItem('username', username);
                 usernameModal.style.display = 'none';
                 usernameInput.disabled = true;
                 setUsernameButton.disabled = true;
             }
         };
+
+        if (username) {
+            usernameModal.style.display = 'none';
+        }
 
         setUsernameButton.addEventListener('click', setUsername);
         usernameInput.addEventListener('keypress', (e) => {
@@ -115,6 +121,29 @@
             `;
             messagesContainer.appendChild(messageElement);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        });
+
+        // Load previous messages on page load
+        window.addEventListener('load', () => {
+            if (username) {
+                usernameModal.style.display = 'none';
+            }
+
+            const messagesRef = ref(db, 'messages');
+            onChildAdded(messagesRef, (snapshot) => {
+                const data = snapshot.val();
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.innerHTML = `
+                    <div class="message-header">
+                        <span class="message-username">${data.username}</span>
+                        <span class="message-timestamp">${formatTime(data.timestamp)}</span>
+                    </div>
+                    <div class="message-body">${data.message}</div>
+                `;
+                messagesContainer.appendChild(messageElement);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            });
         });
     </script>
 </body>

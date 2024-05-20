@@ -48,12 +48,14 @@ body {
 }
 
 .chat-container {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     background: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     color: white;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .chat-header {
@@ -61,6 +63,7 @@ body {
     color: white;
     padding: 20px;
     text-align: center;
+    border-bottom: 1px solid #40444b;
 }
 
 .chat-messages {
@@ -99,8 +102,9 @@ body {
 
 .chat-input {
     display: flex;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #40444b;
     background: #2f3136;
+    padding: 10px;
 }
 
 #message-input {
@@ -110,6 +114,7 @@ body {
     outline: none;
     background: #40444b;
     color: white;
+    border-radius: 5px;
 }
 
 #send-button {
@@ -117,5 +122,7 @@ body {
     background: #7289da;
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    margin-left: 10px;
 }
