@@ -11,13 +11,14 @@
     <div id="username-modal" class="modal">
         <div class="modal-content">
             <h2>Enter Your Username</h2>
+            <p>(not easily changable)</p>
             <input type="text" id="username-input" placeholder="Username">
             <button id="set-username-button">Set Username</button>
         </div>
     </div>
     <div class="chat-container">
         <div class="chat-header">
-            <h1>Cloud Chat Room</h1>
+            <h1>chat room</h1>
         </div>
         <div class="chat-messages" id="chat-messages"></div>
         <div class="chat-input">
@@ -31,7 +32,7 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
         import { getDatabase, ref, push, set, onChildAdded } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-        // Your web app's Firebase configuration
+        // Initialize Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyDHsUas6rwytqvUEDtholHDw8ZT86L6vvQ",
             authDomain: "lunatechat.firebaseapp.com",
@@ -42,7 +43,6 @@
             measurementId: "G-MFWL44P22J"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const db = getDatabase(app);
@@ -62,8 +62,6 @@
             if (username) {
                 localStorage.setItem('username', username);
                 usernameModal.style.display = 'none';
-                usernameInput.disabled = true;
-                setUsernameButton.disabled = true;
             }
         };
 
@@ -106,29 +104,8 @@
             return date.toLocaleTimeString();
         };
 
-        // Listen for new messages
-        const messagesRef = ref(db, 'messages');
-        onChildAdded(messagesRef, (snapshot) => {
-            const data = snapshot.val();
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
-            messageElement.innerHTML = `
-                <div class="message-header">
-                    <span class="message-username">${data.username}</span>
-                    <span class="message-timestamp">${formatTime(data.timestamp)}</span>
-                </div>
-                <div class="message-body">${data.message}</div>
-            `;
-            messagesContainer.appendChild(messageElement);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        });
-
-        // Load previous messages on page load
-        window.addEventListener('load', () => {
-            if (username) {
-                usernameModal.style.display = 'none';
-            }
-
+        // Listen for new messages and load existing messages
+        const loadMessages = () => {
             const messagesRef = ref(db, 'messages');
             onChildAdded(messagesRef, (snapshot) => {
                 const data = snapshot.val();
@@ -144,7 +121,10 @@
                 messagesContainer.appendChild(messageElement);
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
             });
-        });
+        };
+
+        loadMessages();
+
     </script>
 </body>
 </html>
