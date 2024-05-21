@@ -34,7 +34,7 @@ body, html {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
-    width: 100%;
+    width: 90%;
     max-width: 100%;
     height: 380px;
     padding: 10px 10px 0; 
@@ -63,7 +63,7 @@ body, html {
 
 .menu-item {
     width: 420px;
-    height: 450px;
+    height: 400px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 15px;
     display: flex;
