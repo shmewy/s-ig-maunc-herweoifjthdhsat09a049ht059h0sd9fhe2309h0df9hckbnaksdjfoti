@@ -39,7 +39,6 @@ body, html {
     height: 380px;
     padding: 10px 10px 0; 
     margin-top: 200px;
-    margin-left: 10px;
     box-sizing: border-box;
     overflow-y: auto;
     scrollbar-width: thin; 
@@ -63,7 +62,7 @@ body, html {
 }
 
 .menu-item {
-    width: 440px;
+    width: 420px;
     height: 450px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 15px;
