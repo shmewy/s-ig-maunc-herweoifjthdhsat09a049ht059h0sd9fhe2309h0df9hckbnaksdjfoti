@@ -3,137 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <script>
-        if (sessionStorage.getItem('nextstep') !== 'true') {
-            window.location.href = 'calculator.html';
-        }
-    </script>
+    <title>Secure Login</title>
+    <meta name="google-signin-client_id" content="202669719229-au5sdl9li7e0vm7pg2u3thv716ve91jq.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="stylesheet" href="login.css">
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
     <div class="login-container">
-        <form id="login-form">
-            <h2>Premium Pass</h2>
-            <h4>(Premium users will have an enhanced experience)</h4>
-            <p>Leave it blank for a premiumless experience</p>
-            <div class="password-container">
-                <input type="password" id="password" name="password">
-                <img id="toggle-password" src="invisibleeye.png" alt="Toggle Password Visibility">
-            </div>
-            <button type="submit">Launch</button>
-        </form>
+        <h2>Premium Pass</h2>
+        <h4>(Premium users will have an enhanced experience)</h4>
+        <div id="g_id_onload"
+             data-client_id="202669719229-au5sdl9li7e0vm7pg2u3thv716ve91jq.apps.googleusercontent.com"
+             data-callback="handleCredentialResponse">
+        </div>
+        <div class="g_id_signin" data-type="standard"></div>
     </div>
-    <script src="toggle-password.js"></script>
+    <div id="content" style="display: none;">
+        <h2>Premium Content</h2>
+        <p>Welcome to the premium area!</p>
+        <button onclick="signOut()">Sign Out</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
     <script>
-        function b64D3c0d3(pB64) {
-            return atob(pB64);
-        }
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        }, false);
 
-        function aT8a5hD3c(aTc) {
-            const _alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const _reverseAlpha = _alpha.split("").reverse().join("");
-            const _lowerAlpha = _alpha.toLowerCase();
-            const _reverseLowerAlpha = _reverseAlpha.toLowerCase();
+        // Prevent common key combinations for developer tools
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I or Ctrl+Shift+J
+                (e.ctrlKey && e.keyCode === 85) || // Ctrl+U
+                (e.keyCode === 123)) { // F12
+                e.preventDefault();
+                return false;
+            }
+        }, false);
 
-            return aTc.split("").map(x => {
-                if (_alpha.includes(x)) {
-                    return _reverseAlpha[_alpha.indexOf(x)];
-                } else if (_lowerAlpha.includes(x)) {
-                    return _reverseLowerAlpha[_lowerAlpha.indexOf(x)];
+        async function handleCredentialResponse(response) {
+            const token = response.credential;
+
+            try {
+                const res = await fetch('http://localhost:3000/verify-token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token }),
+                });
+
+                const data = await res.json();
+
+                if (data.levelOfAccess === 'noAds') {
+                    sessionStorage.setItem('levelOfAccess', 'noAds');
                 } else {
-                    return x;
+                    sessionStorage.setItem('levelOfAccess', 'yesAds');
                 }
-            }).join("");
-        }
 
-        function u5l355C(a, b) {
-            let res = a * b;
-            for (let i = 0; i < 5; i++) {
-                res += (i % 2 === 0) ? i * 3 : i * 2;
-            }
-            return res;
-        }
-
-        function aNuFuN(nUy) {
-            let rvS = nUy.split('').reverse().join('');
-            let dv = rvS.length * 2;
-            return nUy.length;
-        }
-
-        class ObFu5c8H3lp3r {
-            constructor(val) {
-                this.val = val;
-            }
-
-            mUlt1plY(fact) {
-                return this.val * fact;
-            }
-
-            rAnD0p() {
-                let rv = Math.random() * this.val;
-                return this.mUlt1plY(rv);
+                // Redirect to transform.html
+                window.location.href = 'transform.html';
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Login failed. Please try again.');
             }
         }
 
-        function y3tAn0tHuFuNc(x) {
-            let t = x;
-            for (let i = 0; i < 10; i++) {
-                t = (t * i) % (x + 1);
-            }
-            return t;
+        function signOut() {
+            const auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(() => {
+                document.querySelector('.login-container').style.display = 'block';
+                document.getElementById('content').style.display = 'none';
+            });
         }
-
-        function dUmmY0p() {
-            let str = "ur not funny vijay i am the sigma i will always prevent u mwahhahahah";
-            for (let i = 0; i < 100; i++) {
-                str += i % 2 === 0 ? " ev3n " : " 0dd ";
-            }
-            return str;
-        }
-
-        function mA1nD3c0d1ng(eB64) {
-            const aTc = b64D3c0d3(eB64);
-            let rV1 = Math.random();
-            let rV2 = aTc.length * rV1;
-            const dT = aT8a5hD3c(aTc);
-            rV1 += rV2;
-            rV2 = rV1 / rV2;
-            let dR1 = u5l355C(rV1, rV2);
-            let dR2 = aNuFuN(dT);
-            let oH = new ObFu5c8H3lp3r(dR1);
-            let oR = oH.rAnD0p();
-            let nR = Math.pow(oR, 2) / Math.sqrt(dR2);
-            let aN = y3tAn0tHuFuNc(nR);
-            dUmmY0p();
-            return dT;
-        }
-
-        const eB64A = "bmxpdjEyaHZ4Zml2MzRvbHRybS5xaA==";
-        const fDT = mA1nD3c0d1ng(eB64A);
-        let dV1 = fDT.length;
-        let dV2 = dV1 * 2;
-        dV1 = dV2 + dV1;
-        dV2 = dV1 / 3;
-
-        (function() {
-            let iDV = fDT.split('').reverse().join('');
-        })();
-
-        function oUterFun() {
-            function iNnerFun(a, b) {
-                return a + b;
-            }
-            let a = 5;
-            let b = 10;
-            return iNnerFun(a, b);
-        }
-
-        let fR = oUterFun();
-        const script = document.createElement('script');
-        script.src = fDT;
-        document.body.appendChild(script);
     </script>
 </body>
 </html>
