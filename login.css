@@ -20,11 +20,6 @@ body {
     width: 250px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
 h2 {
     margin: 0 0 10px;
     font-size: 1.2em;
@@ -33,30 +28,6 @@ h2 {
 h4 {
     margin: 0 0 10px;
     font-size: 1.0em;
-}
-
-label {
-    margin-bottom: 5px;
-    text-align: left;
-    color: #ddd;
-    font-size: 0.9em;
-}
-
-input {
-    margin-bottom: 10px;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    font-size: 0.9em;
-}
-
-input:focus {
-    border-color: #007bff;
-    background: rgba(255, 255, 255, 0.3);
 }
 
 button {
@@ -72,23 +43,4 @@ button {
 
 button:hover {
     background: #002042;
-}
-
-.password-container {
-    position: relative;
-}
-
-.password-container input {
-    width: calc(100% - 30px);
-    padding-right: 30px;
-}
-
-.password-container img {
-    position: absolute;
-    right: 3px;
-    top: 40%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
 }
