@@ -20,16 +20,6 @@
             height: 100%;
             border: none;
         }
-        #openChatButton {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 10px 20px;
-            background-color: white;
-            border: none;
-            cursor: pointer;
-            z-index: 1000;
-        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -38,24 +28,18 @@
             } else if (sessionStorage.getItem('levelOfAccess') !== 'noAds') {
                 alert('This is for Premium users only');
                 window.location.href = 'options.html';
+            } else {
+                openChatWindow();
             }
         });
 
         function openChatWindow() {
             const chatUrl = 'https://join.slack.com/t/lunaticchats/shared_invite/zt-2ja1jil06-6_10eHQV1EHgggkxlIfsyA'; // Replace with your chat page URL
-            const chatWindow = window.open(chatUrl, 'chatWindow', 'width=400,height=600');
+            const chatWindow = window.open(chatUrl, '_blank', 'width=400,height=600');
 
             if (chatWindow) {
-                // Bring the chat window to the front if it's already open
-                chatWindow.focus();
-
-                // Check if the window is closed
-                const checkWindowClosed = setInterval(() => {
-                    if (chatWindow.closed) {
-                        clearInterval(checkWindowClosed);
-                        alert('Chat window was closed!');
-                    }
-                }, 1000);
+                // Close the original window after opening the new one
+                window.close();
             } else {
                 alert('Please allow pop-ups for this website to open the chat window.');
             }
@@ -63,7 +47,6 @@
     </script>
 </head>
 <body>
-    <button id="openChatButton" onclick="openChatWindow()">Open Chat</button>
-    <iframe src="https://join.slack.com/t/lunaticchats/shared_invite/zt-2ja1jil06-6_10eHQV1EHgggkxlIfsyA" sandbox="allow-scripts allow-same-origin"></iframe>
+    <iframe src="calculator.html" sandbox="allow-scripts allow-same-origin"></iframe>
 </body>
 </html>
