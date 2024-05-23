@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let chatOverlayKey;
     let isSettingKey = false;
     let chatWindow;
-    let chatWindowFocused = false;
 
     const panicKeyInput = document.getElementById('panic-key');
     const panicUrlInput = document.getElementById('panic-url');
@@ -93,15 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === chatOverlayKey) {
             if (!chatWindow || chatWindow.closed) {
                 chatWindow = window.open('chat.html', 'ChatWindow', 'width=400,height=600');
-                chatWindowFocused = true;
             } else {
-                if (chatWindowFocused) {
-                    window.focus();
+                if (document.hasFocus()) {
                     chatWindow.blur();
-                    chatWindowFocused = false;
+                    window.focus();
                 } else {
                     chatWindow.focus();
-                    chatWindowFocused = true;
                 }
             }
         }
