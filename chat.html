@@ -35,9 +35,14 @@
 
         function openChatWindow() {
             const chatUrl = 'https://join.slack.com/t/lunaticchats/shared_invite/zt-2ja1jil06-6_10eHQV1EHgggkxlIfsyA'; // Replace with your chat page URL
-            const chatWindow = window.open(chatUrl, '_blank', 'width=400,height=600');
+            const screenWidth = screen.width;
+            const screenHeight = screen.height;
+            const chatWindow = window.open(chatUrl, '_blank', `width=${screenWidth},height=${screenHeight},top=0,left=0`);
 
             if (chatWindow) {
+                // Prevent the current page from appearing in the browser history
+                history.replaceState(null, '', 'hidden.html');
+
                 // Close the original window after opening the new one
                 window.close();
             } else {
