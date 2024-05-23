@@ -19,11 +19,6 @@
         </div>
         <div class="g_id_signin" data-type="standard"></div>
     </div>
-    <div id="content" style="display: none;">
-        <h2>Premium Content</h2>
-        <p>Welcome to the premium area!</p>
-        <button onclick="signOut()">Sign Out</button>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
     <script>
@@ -41,6 +36,15 @@
                 return false;
             }
         }, false);
+
+        // Disable right-click on Google Sign-In button
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.g_id_signin').forEach(function(element) {
+                element.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                }, false);
+            });
+        });
 
         // Define your premium users
         const premiumUsers = [
@@ -71,14 +75,6 @@
 
             // Redirect to transform.html
             window.location.href = 'transform.html';
-        }
-
-        function signOut() {
-            const auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(() => {
-                document.querySelector('.login-container').style.display = 'block';
-                document.getElementById('content').style.display = 'none';
-            });
         }
     </script>
 </body>
