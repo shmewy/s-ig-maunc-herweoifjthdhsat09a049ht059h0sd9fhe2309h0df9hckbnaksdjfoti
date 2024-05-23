@@ -41,10 +41,9 @@
 
             if (chatWindow) {
                 // Prevent the current page from appearing in the browser history
+                window.close();
                 history.replaceState(null, '', 'hidden.html');
 
-                // Close the original window after opening the new one
-                window.close();
             } else {
                 alert('Please allow pop-ups for this website to open the chat window.');
             }
