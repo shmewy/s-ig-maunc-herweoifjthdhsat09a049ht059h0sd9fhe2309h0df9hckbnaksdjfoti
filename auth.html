@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login</title>
+    <meta name="google-signin-client_id" content="202669719229-au5sdl9li7e0vm7pg2u3thv716ve91jq.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #login, #content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        #content {
+            display: none;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .g_id_signin {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="login">
+        <h2>Login</h2>
+        <div id="g_id_onload"
+             data-client_id="202669719229-au5sdl9li7e0vm7pg2u3thv716ve91jq.apps.googleusercontent.com"
+             data-callback="onSignIn">
+        </div>
+        <div class="g_id_signin" data-type="standard"></div>
+    </div>
+    <div id="content">
+        <h2>Premium Content</h2>
+        <p>Welcome to the premium area!</p>
+        <button onclick="signOut()">Sign Out</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
