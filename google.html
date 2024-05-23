@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Google Auth</title>
+</head>
+<body>
+  <button id="google-sign-in">Sign in with Google</button>
+  <script type="module">
+    import { signInWithGoogle } from './firebase.js';
+
+    document.getElementById('google-sign-in').addEventListener('click', signInWithGoogle);
+  </script>
+</body>
+</html>
