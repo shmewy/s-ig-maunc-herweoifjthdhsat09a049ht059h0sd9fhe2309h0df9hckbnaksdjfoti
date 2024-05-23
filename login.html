@@ -15,7 +15,7 @@
         <h4>(Premium users will have an enhanced experience)</h4>
         <div id="g_id_onload"
              data-client_id="202669719229-au5sdl9li7e0vm7pg2u3thv716ve91jq.apps.googleusercontent.com"
-             data-callback="handleCredentialResponse">
+             data-callback="onSignIn">
         </div>
         <div class="g_id_signin" data-type="standard"></div>
     </div>
@@ -42,32 +42,25 @@
             }
         }, false);
 
-        async function handleCredentialResponse(response) {
-            const token = response.credential;
+        // Define your premium users
+        const premiumUsers = [
+            'user1@gmail.com',
+            'user2@gmail.com'
+        ];
 
-            try {
-                const res = await fetch('http://localhost:3000/verify-token', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ token }),
-                });
+        function onSignIn(response) {
+            const userObject = jwt_decode(response.credential);
+            const email = userObject.email;
 
-                const data = await res.json();
-
-                if (data.levelOfAccess === 'noAds') {
-                    sessionStorage.setItem('levelOfAccess', 'noAds');
-                } else {
-                    sessionStorage.setItem('levelOfAccess', 'yesAds');
-                }
-
-                // Redirect to transform.html
-                window.location.href = 'transform.html';
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Login failed. Please try again.');
+            // Check if the user is in the premium list
+            if (premiumUsers.includes(email)) {
+                sessionStorage.setItem('levelOfAccess', 'noAds');
+            } else {
+                sessionStorage.setItem('levelOfAccess', 'yesAds');
             }
+
+            // Redirect to transform.html
+            window.location.href = 'transform.html';
         }
 
         function signOut() {
