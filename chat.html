@@ -36,15 +36,11 @@
 
         function openChatWindow() {
             const chatUrl = 'https://join.slack.com/t/lunaticlearning/shared_invite/zt-2jgn16rky-ogtvbl5wUs6T1ejxgbVHew'; // Replace with your chat page URL
-            const screenWidth = screen.width;
-            const screenHeight = screen.height;
-            const chatWindow = window.open(chatUrl, '_blank', `width=${screenWidth},height=${screenHeight},top=0,left=0`);
-
+            const chatWindow = window.open('about:blank', '_blank');
             if (chatWindow) {
-                // Prevent the current page from appearing in the browser history
-                window.replace('https://complexcalculations.stcath.net/options.html')
-                history.replaceState(null, '', 'learningisfun.html');
-
+                chatWindow.location.href = chatUrl;
+                // Redirect to options.html without changing the history state
+                window.location.replace('options.html');
             } else {
                 alert('Please allow pop-ups for this website to open the chat window.');
             }
