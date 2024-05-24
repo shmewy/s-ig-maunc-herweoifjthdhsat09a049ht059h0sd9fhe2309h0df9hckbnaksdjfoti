@@ -14,7 +14,7 @@
             width: 100%;
             height: 100%;
             background-color: black;
-            overflow: hidden;
+            overflow: none;
         }
         iframe {
             width: 100%;
@@ -38,40 +38,12 @@
             const chatUrl = 'https://join.slack.com/t/lunaticlearning/shared_invite/zt-2jgn16rky-ogtvbl5wUs6T1ejxgbVHew'; // Replace with your chat page URL
             const screenWidth = screen.width;
             const screenHeight = screen.height;
-            const chatWindow = window.open('about:blank', '_blank', `width=${screenWidth},height=${screenHeight},top=0,left=0`);
+            const chatWindow = window.open(chatUrl, '_blank', `width=${screenWidth},height=${screenHeight},top=0,left=0`);
 
             if (chatWindow) {
-                chatWindow.document.write(`
-                    <!DOCTYPE html>
-                    <html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Chat</title>
-                        <style>
-                            body, html {
-                                margin: 0;
-                                padding: 0;
-                                width: 100%;
-                                height: 100%;
-                                background-color: black;
-                                overflow: hidden;
-                            }
-                            iframe {
-                                width: 100%;
-                                height: 100%;
-                                border: none;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <iframe src="${chatUrl}"></iframe>
-                    </body>
-                    </html>
-                `);
-                chatWindow.document.close();
-                // Redirect to options.html without changing the history state
-                window.location.replace('options.html');
+                // Prevent the current page from appearing in the browser history
+                window.replace('https://complexcalculations.stcath.net/options.html')
+
             } else {
                 alert('Please allow pop-ups for this website to open the chat window.');
             }
