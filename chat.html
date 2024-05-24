@@ -14,7 +14,7 @@
             width: 100%;
             height: 100%;
             background-color: black;
-            overflow: none;
+            overflow: hidden;
         }
         iframe {
             width: 100%;
@@ -36,9 +36,40 @@
 
         function openChatWindow() {
             const chatUrl = 'https://join.slack.com/t/lunaticlearning/shared_invite/zt-2jgn16rky-ogtvbl5wUs6T1ejxgbVHew'; // Replace with your chat page URL
-            const chatWindow = window.open('about:blank', '_blank');
+            const screenWidth = screen.width;
+            const screenHeight = screen.height;
+            const chatWindow = window.open('about:blank', '_blank', `width=${screenWidth},height=${screenHeight},top=0,left=0`);
+
             if (chatWindow) {
-                chatWindow.location.href = chatUrl;
+                chatWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Chat</title>
+                        <style>
+                            body, html {
+                                margin: 0;
+                                padding: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-color: black;
+                                overflow: hidden;
+                            }
+                            iframe {
+                                width: 100%;
+                                height: 100%;
+                                border: none;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <iframe src="${chatUrl}"></iframe>
+                    </body>
+                    </html>
+                `);
+                chatWindow.document.close();
                 // Redirect to options.html without changing the history state
                 window.location.replace('options.html');
             } else {
