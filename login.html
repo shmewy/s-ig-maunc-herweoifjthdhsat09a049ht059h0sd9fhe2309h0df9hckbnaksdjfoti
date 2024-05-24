@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Login</title>
+    <title>Calculator</title>
     <meta name="google-signin-client_id" content="202669719229-au5sdl9li7e0vm7pg2u3thv716ve91jq.apps.googleusercontent.com">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="stylesheet" href="login.css">
@@ -19,6 +19,12 @@
         </div>
         <div class="g_id_signin" data-type="standard"></div>
     </div>
+    <script>
+		// Check if coming from the correct path
+		if (sessionStorage.getItem('authenticated') !== 'true') {
+			window.location.href = 'https://complexcalculations.stcath.net';
+		}
+	</script>
 
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
     <script>
