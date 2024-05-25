@@ -15,21 +15,42 @@
                 window.location.href = 'options.html';
             } else {
                 openChatWindow();
+                window.location.href = 'options.html'; // Redirect to options.html after opening the popup
             }
         });
+
+        function openChatWindow() {
+            var newWindow = window.open('about:blank', '_blank', 'width=800,height=600');
+            var html = `
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Screen Recorder</title>
+                    <link rel="icon" type="image/png" href="favicon.png">
+                    <link rel="stylesheet" href="recorder.css">
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>Screen Recorder</h1>
+                        <video id="preview" autoplay></video>
+                        <div class="controls">
+                            <button id="startBtn">Start Recording</button>
+                            <button id="stopBtn" disabled>Stop Recording</button>
+                        </div>
+                        <video id="recording" controls></video>
+                    </div>
+                    <script src="recorder.js"></script>
+                </body>
+                </html>
+            `;
+            newWindow.document.write(html);
+            newWindow.document.close();
+        }
     </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Screen Recorder</h1>
-        <video id="preview" autoplay></video>
-        <div class="controls">
-            <button id="startBtn">Start Recording</button>
-            <button id="stopBtn" disabled>Stop Recording</button>
-        </div>
-        <video id="recording" controls></video>
-    </div>
-
-    <script src="recorder.js"></script>
+    <!-- The body can remain empty since everything will be handled in the popup -->
 </body>
 </html>
