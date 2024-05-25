@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Screen Recorder</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="recorder.css">
     <script>
@@ -22,12 +22,16 @@
 <body>
     <div class="container">
         <h1>Screen Recorder</h1>
-        <video id="preview" autoplay></video>
+        <div class="video-container">
+            <video id="preview" autoplay></video>
+        </div>
         <div class="controls">
             <button id="startBtn">Start Recording</button>
             <button id="stopBtn" disabled>Stop Recording</button>
         </div>
-        <video id="recording" controls></video>
+        <div class="video-container">
+            <video id="recording" controls></video>
+        </div>
     </div>
 
     <script src="recorder.js"></script>
