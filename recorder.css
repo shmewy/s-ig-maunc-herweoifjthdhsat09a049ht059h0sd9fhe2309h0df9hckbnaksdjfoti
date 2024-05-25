@@ -1,72 +1,50 @@
-body {
+body, html {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url('blurredbackground.png') no-repeat center center fixed;
-    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
 }
 
 h1 {
     margin-bottom: 20px;
-    font-size: 2em;
 }
 
 video {
     width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
+    max-height: 50vh;
+    background-color: black;
     margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .controls {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    margin-bottom: 20px;
 }
 
 button {
     padding: 10px 20px;
-    font-size: 1em;
-    font-weight: bold;
+    margin: 0 10px;
+    background-color: #007bff;
     border: none;
-    border-radius: 5px;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-}
-
-button#startBtn {
-    background-color: #4CAF50;
-    color: white;
-}
-
-button#startBtn:hover {
-    background-color: #45a049;
-}
-
-button#stopBtn {
-    background-color: #f44336;
-    color: white;
-}
-
-button#stopBtn:hover {
-    background-color: #e53935;
+    font-size: 16px;
 }
 
 button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    background-color: #6c757d;
 }

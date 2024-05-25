@@ -1,45 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const startBtn = document.getElementById('startBtn');
-    const stopBtn = document.getElementById('stopBtn');
+document.getElementById('startBtn').addEventListener('click', async () => {
     const preview = document.getElementById('preview');
     const recording = document.getElementById('recording');
-    let mediaRecorder;
-    let recordedChunks = [];
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
 
-    startBtn.addEventListener('click', async () => {
-        try {
-            const stream = await navigator.mediaDevices.getDisplayMedia({
-                video: { cursor: "motion" },
-                audio: false
-            });
-            preview.srcObject = stream;
-            mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8' });
-            
-            mediaRecorder.ondataavailable = (event) => {
-                if (event.data.size > 0) {
-                    recordedChunks.push(event.data);
-                }
-            };
+    const constraints = {
+        video: {
+            width: { ideal: 1920 }, // High resolution width
+            height: { ideal: 1080 }, // High resolution height
+            frameRate: { ideal: 30 } // Frame rate
+        },
+        audio: true
+    };
 
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: 'video/webm' });
-                const url = URL.createObjectURL(blob);
-                recording.src = url;
-                recordedChunks = [];
-            };
+    try {
+        const stream = await navigator.mediaDevices.getDisplayMedia(constraints);
+        preview.srcObject = stream;
 
-            mediaRecorder.start();
-            startBtn.disabled = true;
-            stopBtn.disabled = false;
-        } catch (err) {
-            console.error("Error: " + err);
-        }
-    });
+        const options = { mimeType: 'video/webm; codecs=vp9' };
+        const mediaRecorder = new MediaRecorder(stream, options);
+        
+        const chunks = [];
+        mediaRecorder.ondataavailable = e => chunks.push(e.data);
+        mediaRecorder.onstop = e => {
+            const completeBlob = new Blob(chunks, { type: chunks[0].type });
+            recording.src = URL.createObjectURL(completeBlob);
+            recording.controls = true;
+        };
 
-    stopBtn.addEventListener('click', () => {
-        mediaRecorder.stop();
+        stopBtn.onclick = () => {
+            mediaRecorder.stop();
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            stream.getTracks().forEach(track => track.stop());
+        };
+
+        mediaRecorder.start();
+    } catch (err) {
+        console.error('Error: ' + err);
         startBtn.disabled = false;
         stopBtn.disabled = true;
-        preview.srcObject.getTracks().forEach(track => track.stop());
-    });
+    }
 });
