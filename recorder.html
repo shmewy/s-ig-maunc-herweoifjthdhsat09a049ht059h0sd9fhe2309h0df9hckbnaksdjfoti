@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="recorder.css">
+    <script src="panicKey.js"></script>
+    <script src="settings.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            overflow: none;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             if (sessionStorage.getItem('optionspage') !== 'true') {
@@ -19,38 +35,22 @@
         });
 
         function openChatWindow() {
-            var newWindow = window.open('', '_blank', 'width=800,height=600');
-            var html = `
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Screen Recorder</title>
-                    <link rel="icon" type="image/png" href="favicon.png">
-                    <link rel="stylesheet" href="recorder.css">
-                </head>
-                <body>
-                    <div class="container">
-                        <h1>Screen Recorder</h1>
-                        <video id="preview" autoplay></video>
-                        <div class="controls">
-                            <button id="startBtn">Start Recording</button>
-                            <button id="stopBtn" disabled>Stop Recording</button>
-                        </div>
-                        <video id="recording" controls></video>
-                    </div>
-                    <script src="recorder.js"></script>
-                </body>
-                </html>
-            `;
-            newWindow.document.open();
-            newWindow.document.write(html);
-            newWindow.document.close();
+            const chatUrl = 'recordnotpopup.html'; // Replace with your chat page URL
+            const screenWidth = screen.width;
+            const screenHeight = screen.height;
+            const chatWindow = window.open(chatUrl, '_blank', `width=${screenWidth},height=${screenHeight},top=0,left=0`);
+
+            if (chatWindow) {
+                // Prevent the current page from appearing in the browser history
+                window.location.replace('https://complexcalculations.stcath.net/options.html')
+
+            } else {
+                alert('Please allow pop-ups for this website to open the chat window.');
+            }
         }
     </script>
 </head>
 <body>
-    <!-- The body can remain empty since everything will be handled in the popup -->
+    <p>Error: no content available</p>
 </body>
 </html>
