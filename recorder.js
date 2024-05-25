@@ -11,6 +11,7 @@ document.getElementById('startBtn').addEventListener('click', async () => {
         video: {
             width: { ideal: 1920 }, // High resolution width
             height: { ideal: 1080 }, // High resolution height
+            aspectRatio: 16 / 9, // Ensure 16:9 aspect ratio
             frameRate: { ideal: 60 } // Frame rate
         },
         audio: true
