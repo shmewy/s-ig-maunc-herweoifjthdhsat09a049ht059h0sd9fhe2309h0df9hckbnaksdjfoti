@@ -9,8 +9,8 @@ document.getElementById('startBtn').addEventListener('click', async () => {
 
     const constraints = {
         video: {
-            width: { ideal: 1920 }, 
-            height: { ideal: 1080 }, 
+            width: { ideal: 3840 }, 
+            height: { ideal: 2160 }, 
             aspectRatio: 16 / 9, 
             frameRate: { ideal: 90 } 
         },
