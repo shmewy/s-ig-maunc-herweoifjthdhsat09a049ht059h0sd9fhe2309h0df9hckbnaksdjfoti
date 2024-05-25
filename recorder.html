@@ -45,8 +45,12 @@
                 </body>
                 </html>
             `;
+            newWindow.document.open();
             newWindow.document.write(html);
             newWindow.document.close();
+            newWindow.onload = function() {
+                window.location.href = 'options.html';
+            };
         }
     </script>
 </head>
