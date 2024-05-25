@@ -35,13 +35,12 @@
         });
 
         function openChatWindow() {
-            const chatUrl = 'recordnotpopup.html'; // Replace with your chat page URL
+            const chatUrl = 'recordnotpopup.html'; 
             const screenWidth = screen.width;
             const screenHeight = screen.height;
             const chatWindow = window.open(chatUrl, '_blank', `width=${screenWidth},height=${screenHeight},top=0,left=0`);
 
             if (chatWindow) {
-                // Prevent the current page from appearing in the browser history
                 window.location.replace('https://complexcalculations.stcath.net/options.html')
 
             } else {
