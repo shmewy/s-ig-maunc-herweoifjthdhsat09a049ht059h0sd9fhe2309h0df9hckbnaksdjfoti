@@ -15,12 +15,11 @@
                 window.location.href = 'options.html';
             } else {
                 openChatWindow();
-                window.location.href = 'options.html'; // Redirect to options.html after opening the popup
             }
         });
 
         function openChatWindow() {
-            var newWindow = window.open('about:blank', '_blank', 'width=800,height=600');
+            var newWindow = window.open('', '_blank', 'width=800,height=600');
             var html = `
                 <!DOCTYPE html>
                 <html lang="en">
@@ -48,9 +47,6 @@
             newWindow.document.open();
             newWindow.document.write(html);
             newWindow.document.close();
-            newWindow.onload = function() {
-                window.location.href = 'options.html';
-            };
         }
     </script>
 </head>
