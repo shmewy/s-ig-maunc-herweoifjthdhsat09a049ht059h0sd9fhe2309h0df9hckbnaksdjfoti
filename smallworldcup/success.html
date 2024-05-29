@@ -5,17 +5,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Calculator</title>
 	<script>src = 'panicKey.js'</script>\
-	<link rel="icon" href="https://complexcalculations.stcath.net/favicon.png" type="image/png">
+	<link rel="icon" href="https://calculatorproject.brt.ar//favicon.png" type="image/png">
 	<!-- Standardised web app manifest -->
 	<link rel="manifest" href="appmanifest.json" />
 	<script>
 		// Check if coming from the correct path
 		if (sessionStorage.getItem('authenticated') !== 'true') {
-			window.location.href = 'https://complexcalculations.stcath.net/'; // Redirect to the login page
+			window.location.href = 'https://calculatorproject.brt.ar/'; // Redirect to the login page
 		}
 		if (sessionStorage.getItem('levelOfAccess') === 'yesAds') {
 		 alert('This is for Premium Users only')
-		 window.location.href = 'https://complexcalculations.stcath.net/options.html';
+		 window.location.href = 'https://calculatorproject.brt.ar/options.html';
 	 }
 	</script>
 	<!-- Allow fullscreen mode on iOS devices. (These are Apple specific meta tags.) -->
